@@ -1,0 +1,370 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "team": "Team",
+    "blog": "Blog",
+    "partners": "Partners",
+    "cta": "Consultation"
+  },
+  "layout": {
+    "header": {
+      "callAriaLabel": "Call us",
+      "subtitle": "Attorneys at Law",
+      "mobileMenuOpen": "MENU",
+      "mobileMenuClose": "CLOSE"
+    },
+    "footer": {
+      "tagline": "Legal services of the highest standard, protecting your business and personal interests.",
+      "contactHeading": "Contact",
+      "location": "Tbilisi, D. Aghmashenebeli Ave. 66b, 4th Floor, Apt. N6",
+      "areasHeading": "Practice Areas",
+      "areas": [
+        "Civil Law",
+        "Administrative Law",
+        "Criminal Law"
+      ],
+      "copyright": "All Rights Reserved.",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy",
+      "navHeading": "About Us",
+      "navLinks": [
+        "Home",
+        "Services",
+        "Team",
+        "Partners",
+        "About Us",
+        "Contact"
+      ],
+      "navRoutes": [
+        "/",
+        "/services",
+        "/team",
+        "/partners",
+        "/about",
+        "/contact"
+      ],
+      "servicesHeading": "Services",
+      "servicesList": [
+        "Civil Law",
+        "Administrative Law",
+        "Criminal Law"
+      ],
+      "phones": [
+        {
+          "display": "+995 593 93 00 77",
+          "href": "tel:+995593930077"
+        },
+        {
+          "display": "+995 591 88 00 82",
+          "href": "tel:+995591880082"
+        },
+        {
+          "display": "(0322) 11 05 06",
+          "href": "tel:+995322110506"
+        }
+      ],
+      "email": "info@darchiapartners.ge",
+      "credit": "Developed by Invento Technologies"
+    },
+    "bottomNav": {
+      "ariaLabel": "Main navigation"
+    }
+  },
+  "home": {
+    "hero": {
+      "imgAlt": "Darchia & Partners — Office Interior",
+      "eyebrow": "Law Office",
+      "tagline": "20 Years – At Your Service",
+      "heading1": "Legal Protection.",
+      "heading2": "Strategic Results.",
+      "subCopy": "We provide comprehensive legal representation for individuals and corporate entities, safeguarding their interests at every stage of dispute resolution. Our firm brings decades of proven expertise across civil, administrative, and criminal law.",
+      "cta1": "Request a Consultation",
+      "cta2": "Practice Areas",
+      "stats": [
+        "Years of Legal Practice",
+        "Corporate Partners",
+        "Core Practice Areas"
+      ]
+    },
+    "services": {
+      "eyebrow": "Our Areas",
+      "heading": "Areas of Legal Practice",
+      "learnMore": "Learn More",
+      "areas": [
+        {
+          "title": "Civil Law",
+          "desc": "Resolution of property, contractual, and family disputes. Full representation and advocacy at every level of the judicial system."
+        },
+        {
+          "title": "Administrative Law",
+          "desc": "Disputes with public authorities, licensing, permitting, and the full spectrum of public law matters."
+        },
+        {
+          "title": "Criminal Law",
+          "desc": "Rigorous defence at every stage — from initial investigation through prosecution to final adjudication."
+        }
+      ],
+      "contact": {
+        "quickLine": "Direct Line",
+        "hoursLabel": "Working Hours",
+        "hours": "Mon – Fri · 10:00 – 20:00 (GET)",
+        "cta": "Schedule a Consultation"
+      }
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "eyebrow": "Our Practice Areas",
+      "heading1": "Areas of",
+      "heading2": "Legal Practice",
+      "subCopy": "Legal services tailored to the comprehensive protection of your business and personal interests."
+    },
+    "cards": {
+      "subServicesLabel": "Key Areas:",
+      "cta": "Request a Consultation"
+    },
+    "services": [
+      {
+        "title": "Civil Law",
+        "desc": "We represent and protect your interests in complex civil disputes, providing a tailored strategy for the effective resolution of property, contractual, and family matters — in your favour.",
+        "subServices": [
+          "Contractual Disputes",
+          "Property & Real Rights Disputes",
+          "Family & Succession Disputes",
+          "Tort & Damages Claims",
+          "Employment Disputes"
+        ]
+      },
+      {
+        "title": "Administrative Law",
+        "desc": "Engagement with public authorities demands specialised legal expertise. We safeguard your interests in administrative disputes and ensure the unimpeded obtaining of licences and permits.",
+        "subServices": [
+          "Representation before Public Authorities",
+          "Tax & Customs Disputes",
+          "Licensing & Permitting",
+          "Tenders & Public Procurement",
+          "Administrative Offences"
+        ]
+      },
+      {
+        "title": "Criminal Law",
+        "desc": "In criminal proceedings, professional defence counsel is of critical importance. Our experienced attorneys ensure the full and effective protection of your rights at every stage of the proceedings.",
+        "subServices": [
+          "Defence during the Investigative Stage",
+          "Court Representation",
+          "Preventive Measures & Detention",
+          "Appeals to Superior Courts",
+          "Official & Economic Crimes"
+        ]
+      }
+    ],
+    "stats": [
+      {
+        "label": "Years of Legal Practice"
+      },
+      {
+        "label": "Successfully Concluded Cases"
+      },
+      {
+        "label": "Retained Corporate Partners"
+      }
+    ],
+    "teamCta": {
+      "heading": "Experienced Professionals at Your Service",
+      "button": "Meet Our Team"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "eyebrow": "About Us",
+      "heading1": "Professionalism and",
+      "heading2": "Results-Oriented Solutions"
+    },
+    "intro": {
+      "eyebrow": "About the Firm",
+      "heading": "Who We Are",
+      "body": "Founded in 2015, Darchia & Partners has established itself on the market as a trusted legal partner. Our team brings together highly qualified professionals whose years of practical experience and academic achievements guarantee maximum legal protection for our clients."
+    },
+    "whyUs": {
+      "eyebrow": "Our Strengths",
+      "heading": "Why Choose Our Team?",
+      "bullets": [
+        {
+          "title": "Years of Experience",
+          "desc": "The firm is led by an attorney with over 20 years of practice, supported by lawyers with more than 10 years of experience and distinguished academic credentials."
+        },
+        {
+          "title": "Wide Specialisation",
+          "desc": "We provide defence and representation for clients across criminal, civil, and administrative law."
+        },
+        {
+          "title": "Corporate Expertise",
+          "desc": "For years, our firm has successfully served companies across various sectors, ensuring sound legal decision-making for each of them."
+        },
+        {
+          "title": "Academic Engagement",
+          "desc": "Team members are actively involved in educational activities, leading university programmes and authoring academic publications — enabling us to apply innovative approaches to complex legal matters."
+        }
+      ]
+    },
+    "values": {
+      "eyebrow": "Our Values",
+      "heading": "Three Principles That Guide Everything We Do",
+      "items": [
+        {
+          "title": "Confidentiality",
+          "desc": "The inviolability of all information provided by our clients is our foremost obligation."
+        },
+        {
+          "title": "Professional Ethics",
+          "desc": "We operate in strict adherence to the highest standards of legal ethics, which is the foundation of the trust our clients place in us."
+        },
+        {
+          "title": "Innovation",
+          "desc": "We continuously monitor legislative changes and judicial practice to offer our clients modern and effective legal solutions."
+        }
+      ]
+    },
+    "languages": {
+      "eyebrow": "Languages of Service",
+      "heading": "We Serve in Five Languages",
+      "list": [
+        "Georgian",
+        "English",
+        "Russian",
+        "German",
+        "Ukrainian"
+      ]
+    },
+    "mission": {
+      "eyebrow": "Our Mission",
+      "body": "Our mission is to create a secure legal environment for our partners by combining theoretical knowledge with rich practical experience. The measure of our success is the trust and satisfaction of our clients."
+    }
+  },
+  "partnersPage": {
+    "hero": {
+      "imgAlt": "Darchia & Partners — Office and Partners",
+      "eyebrow": "Trusted Partnerships",
+      "heading1": "Professional Integrity.",
+      "heading2": "Built on Trust.",
+      "subCopy": "Darchia & Partners provides comprehensive legal support to corporate clients and organizations at every stage of their operations."
+    },
+    "partners": {
+      "tbc": {
+        "desc": "Georgia's leading commercial bank"
+      },
+      "bog": {
+        "desc": "LSE-listed universal banking group"
+      },
+      "pasha": {
+        "desc": "Corporate & investment banking"
+      },
+      "gba": {
+        "desc": "National legal professional body"
+      },
+      "ger-chamber": {
+        "desc": "International business chamber"
+      },
+      "icc": {
+        "desc": "International Chamber of Commerce"
+      },
+      "amcham": {
+        "desc": "American Chamber of Commerce"
+      },
+      "giz": {
+        "desc": "German development cooperation agency"
+      }
+    },
+    "viewMore": "View Details",
+    "visitWebsite": "Visit Website",
+    "becomePartner": {
+      "eyebrow": "Become a Partner",
+      "heading": "Interested in Collaboration?",
+      "subCopy": "We are seeking new partner organisations from the financial, legal, and international sectors. Contact us to explore the possibilities.",
+      "cta": "Get in Touch"
+    }
+  },
+  "teamPage": {
+    "hero": {
+      "eyebrow": "Our Team",
+      "heading1": "Experienced Attorneys",
+      "heading2": "By Your Side",
+      "subCopy": "Our team comprises leading specialists in their respective fields, each capable of meeting any legal challenge with precision and expertise."
+    },
+    "grid": {
+      "eyebrow": "Our Attorneys",
+      "viewProfile": "View Profile"
+    },
+    "modal": {
+      "closeAriaLabel": "Close",
+      "linkedin": "LinkedIn Profile",
+      "cta": "Request a Consultation"
+    }
+  },
+  "blogPage": {
+    "hero": {
+      "eyebrow": "Publications",
+      "heading": "Insights"
+    },
+    "readMore": "Read Article",
+    "minRead": "min read",
+    "grid": {
+      "eyebrow": "Latest Articles"
+    }
+  },
+  "consultationBanner": {
+    "heading": "Need Legal Counsel?",
+    "subCopy": "Our experienced attorneys are prepared to assist you.",
+    "cta": "Request a Consultation"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Request a Consultation",
+    "description": "Fill in the form to book an initial consultation. Our attorney will contact you shortly to discuss the details.",
+    "optional": "(optional)",
+    "fields": {
+      "name": "Full Name",
+      "namePlaceholder": "John Smith",
+      "phone": "Phone Number",
+      "email": "Email",
+      "topic": "Practice Area",
+      "topicPlaceholder": "Select an area",
+      "message": "Message",
+      "messagePlaceholder": "Briefly describe your issue..."
+    },
+    "topics": [
+      "Civil Law",
+      "Administrative Law",
+      "Criminal Law",
+      "Other"
+    ],
+    "errors": {
+      "nameRequired": "This field is required",
+      "phoneRequired": "Phone number is required",
+      "phoneInvalid": "Please enter a valid Georgian number (9 digits)",
+      "emailInvalid": "Please enter a valid email address"
+    },
+    "submit": "Send",
+    "success": {
+      "title": "Request Sent Successfully",
+      "body": "Our team will contact you shortly on the number provided."
+    },
+    "modal": {
+      "title": "Confirm Your Details",
+      "body": "Please review your contact information before submitting.",
+      "phone": "Phone",
+      "email": "Email",
+      "back": "Edit",
+      "confirm": "Confirm"
+    },
+    "location": {
+      "eyebrow": "Location",
+      "heading": "Our Office",
+      "address": "66b D. Aghmashenebeli Ave",
+      "city": "Tbilisi, Georgia",
+      "directions": "View on Google Maps"
+    }
+  }
+}
