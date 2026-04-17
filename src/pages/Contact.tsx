@@ -9,7 +9,7 @@ import SEO from '../components/SEO'
 // ── Shared styles ────────────────────────────────────────────────────────────
 
 const fieldCls =
-  'w-full bg-stone-100/50 rounded-lg px-4 py-3 text-[14px] font-normal text-stone-900 placeholder:text-stone-500 outline-none focus:bg-white focus:ring-1 focus:ring-stone-900/10 transition-all duration-200'
+  'w-full bg-stone-100/50 rounded-xl px-4 py-3 text-[14px] font-normal text-stone-900 placeholder:text-stone-500 outline-none focus:bg-white focus:ring-2 focus:ring-gold-500/30 transition-all duration-200'
 
 const labelCls =
   'block text-[10px] tracking-[0.15em] uppercase font-semibold text-stone-700 mb-1.5'
@@ -66,7 +66,7 @@ function PhoneInput({
     <div>
       <motion.div animate={controls}>
         {/* Prefix lock + input row */}
-        <div className="flex items-center bg-stone-100/50 rounded-lg px-4 py-3 focus-within:bg-white focus-within:ring-1 focus-within:ring-stone-900/10 transition-all duration-200">
+        <div className="flex items-center bg-stone-100/50 rounded-xl px-4 py-3 focus-within:bg-white focus-within:ring-2 focus-within:ring-gold-500/30 transition-all duration-200">
           <span className="text-[14px] font-light text-stone-500 select-none shrink-0 mr-0.5">
             +995
           </span>
@@ -132,7 +132,7 @@ function CustomSelect({
       <button
         type="button"
         onClick={() => setOpen(o => !o)}
-        className="w-full bg-stone-100/50 rounded-lg px-4 py-3 text-[14px] font-light text-left outline-none focus:bg-white focus:ring-1 focus:ring-stone-900/10 transition-all duration-200 flex items-center justify-between gap-3"
+        className="w-full bg-stone-100/50 rounded-xl px-4 py-3 text-[14px] font-light text-left outline-none focus:bg-white focus:ring-2 focus:ring-gold-500/30 transition-all duration-200 flex items-center justify-between gap-3"
       >
         <span className={value ? 'text-stone-900' : 'text-stone-400'}>
           {value || placeholder}
@@ -153,7 +153,7 @@ function CustomSelect({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: -6 }}
             transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute top-full left-0 w-full mt-1.5 bg-white border border-stone-100 rounded-lg shadow-2xl z-50 overflow-hidden py-1"
+            className="absolute top-full left-0 w-full mt-1.5 bg-white border border-stone-100 rounded-xl shadow-2xl z-50 overflow-hidden py-1"
           >
             {options.map(opt => (
               <li key={opt}>
@@ -468,7 +468,7 @@ mailPromises.push(
             <div className="pt-1">
               <button
                 type="submit"
-                className="w-full bg-stone-900 text-white py-3.5 rounded-lg text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-stone-800 transition-colors duration-200"
+                className="w-full bg-stone-900 text-white py-3.5 rounded-full text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-stone-800 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300"
               >
                 {t('contact.submit')}
               </button>
@@ -478,16 +478,16 @@ mailPromises.push(
         )}
 
         {/* ── Contact strip ────────────────────────────────────────────────── */}
-        <div className="mt-10 pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-3 sm:gap-8">
+        <div className="mt-10 pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-4 sm:gap-10">
           <a href="tel:+995511411604" className="flex items-center gap-2.5 no-underline group">
-            <Phone size={13} strokeWidth={1.5} className="text-stone-400 shrink-0" />
+            <Phone size={13} strokeWidth={1.5} className="text-gold-500 shrink-0" />
             <span className="text-stone-700 text-sm font-light group-hover:text-stone-900 transition-colors duration-200">
              032 219 08 39
 
             </span>
           </a>
           <a href="mailto:Balance.101@Outlook.com" className="flex items-center gap-2.5 no-underline group">
-            <Mail size={13} strokeWidth={1.5} className="text-stone-400 shrink-0" />
+            <Mail size={13} strokeWidth={1.5} className="text-gold-500 shrink-0" />
             <span className="text-stone-700 text-sm font-light group-hover:text-stone-900 transition-colors duration-200">
               Balance.101@Outlook.com
             </span>
@@ -515,12 +515,12 @@ mailPromises.push(
           </div>
 
           {/* Card: map + info bar */}
-          <div className="bg-white rounded-2xl shadow-sm ring-1 ring-stone-200 overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-xl shadow-stone-200/60 ring-1 ring-stone-200 overflow-hidden">
             {/* Map */}
             <div className="w-full aspect-square sm:aspect-16/10 md:aspect-video">
               <iframe
                 title="Balance101"
-                src="[PLACEHOLDER_MAPS_EMBED_URL]"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d95431.05781194015!2d44.82681733712641!3d41.62936384276565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440d9d3efa1247%3A0x9763e8a33b82cc9!2sHualing%20Tbilisi%20Sea%20Plaza!5e0!3m2!1sen!2sge!4v1776443599733!5m2!1sen!2sge"
                 width="100%"
                 height="100%"
                 loading="lazy"
@@ -549,10 +549,10 @@ mailPromises.push(
 
               {/* Directions button */}
               <a
-                href="[PLACEHOLDER_MAPS_URL]"
+                href="https://maps.app.goo.gl/53yGLP5rnAMF255r6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-900 text-white text-[10px] tracking-[0.18em] uppercase font-semibold rounded-lg hover:bg-stone-800 transition-colors duration-200 no-underline shrink-0"
+                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-900 text-white text-[10px] tracking-[0.18em] uppercase font-semibold rounded-full hover:bg-stone-800 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 no-underline shrink-0"
               >
                 <ExternalLink size={11} strokeWidth={2} />
                 {t('contact.location.directions')}
@@ -581,7 +581,7 @@ mailPromises.push(
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.18, ease: 'easeOut' }}
-                className="w-full max-w-sm bg-white rounded-2xl px-6 pt-7 pb-7 shadow-2xl pointer-events-auto"
+                className="w-full max-w-sm bg-white rounded-3xl px-6 pt-7 pb-7 shadow-2xl pointer-events-auto"
               >
 
                 <h3 className="font-serif text-lg text-stone-900 font-normal mb-1">
@@ -592,7 +592,7 @@ mailPromises.push(
                 </p>
 
                 <div className="space-y-2 mb-8">
-                  <div className="flex items-center gap-3 bg-stone-50 rounded-lg px-4 py-3">
+                  <div className="flex items-center gap-3 bg-stone-50 rounded-xl px-4 py-3">
                     <Phone size={13} strokeWidth={1.5} className="text-stone-400 shrink-0" />
                     <div>
                       <p className="text-[10px] tracking-[0.15em] uppercase font-semibold text-stone-500 mb-0.5">
@@ -602,7 +602,7 @@ mailPromises.push(
                     </div>
                   </div>
                   {form.email.trim() && (
-                    <div className="flex items-center gap-3 bg-stone-50 rounded-lg px-4 py-3">
+                    <div className="flex items-center gap-3 bg-stone-50 rounded-xl px-4 py-3">
                       <Mail size={13} strokeWidth={1.5} className="text-stone-400 shrink-0" />
                       <div>
                         <p className="text-[10px] tracking-[0.15em] uppercase font-semibold text-stone-500 mb-0.5">
@@ -618,7 +618,7 @@ mailPromises.push(
                   <button
                     type="button"
                     onClick={() => setConfirming(false)}
-                    className="py-3 rounded-lg border border-stone-200 text-stone-600 text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-stone-50 transition-colors duration-200"
+                    className="py-3 rounded-full border border-stone-200 text-stone-600 text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-stone-50 hover:-translate-y-0.5 hover:shadow-md transition-all duration-300"
                   >
                     {t('contact.modal.back')}
                   </button>
@@ -626,7 +626,7 @@ mailPromises.push(
                     type="button"
                     onClick={handleConfirm}
                     disabled={isSubmitting}
-                    className="py-3 rounded-lg bg-stone-900 text-white text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-stone-800 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="py-3 rounded-full bg-stone-900 text-white text-[10px] tracking-[0.2em] uppercase font-semibold hover:bg-stone-800 hover:-translate-y-0.5 hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? '...' : t('contact.modal.confirm')}
                   </button>
