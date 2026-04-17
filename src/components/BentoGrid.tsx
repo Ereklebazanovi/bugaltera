@@ -84,7 +84,7 @@ export default function BentoGrid() {
                 key={anchor}
                 variants={cardVariant}
                 whileHover="hover"
-                className="bg-white border border-stone-200 rounded-xl p-6 md:p-8 shadow-sm transition-shadow duration-300 hover:shadow-md flex flex-col"
+                className="bg-white border border-stone-200 rounded-xl p-6 md:p-8 shadow-sm transition-[box-shadow,border-color] duration-300 hover:shadow-md hover:border-l-gold-500 flex flex-col"
               >
                 <div className="flex items-start gap-4 mb-4 min-h-16">
                   <Icon size={20} strokeWidth={1.2} className="text-stone-400 shrink-0 mt-1" />

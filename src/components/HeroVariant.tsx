@@ -11,7 +11,7 @@ import CountUp from './CountUp'
 const TRUST_STATS = [
   { num: 10, suffix: '+' },
   { num: 50, suffix: '+' },
-  { num: 4,  suffix: '' },
+  { num: 10,  suffix: '+' },
 ]
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -57,12 +57,14 @@ export default function HeroVariant() {
           >
             {/* 1 — Eyebrow: firm type */}
             <motion.p
-              className="text-[10px] md:text-xs tracking-[0.2em] text-white/80 uppercase"
+              className="flex items-center gap-2 text-[10px] md:text-xs tracking-[0.2em] text-white/80 uppercase"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.15 }}
             >
+              <span className="w-5 h-px bg-gold-400 shrink-0" />
               {t('home.hero.eyebrow')}
+              <span className="w-5 h-px bg-gold-400 shrink-0" />
             </motion.p>
 
             {/* 2 — Main title: firm name */}
@@ -96,7 +98,7 @@ export default function HeroVariant() {
 
             {/* 4a — Slogan */}
             <motion.p
-              className="font-serif font-light text-2xl md:text-3xl text-white tracking-wide"
+              className="font-serif font-light italic text-2xl md:text-3xl text-white tracking-wide"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.55 }}
@@ -117,7 +119,7 @@ export default function HeroVariant() {
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-2 md:mt-4">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto bg-stone-900 text-white text-sm font-medium tracking-wide hover:bg-stone-800 transition-all duration-300 no-underline"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto bg-stone-900 text-white text-sm font-medium tracking-wide hover:bg-stone-800 transition-all duration-300 no-underline rounded-sm"
               >
                 {t('home.hero.cta1')}
                 <ArrowRight size={14} strokeWidth={1.5} />

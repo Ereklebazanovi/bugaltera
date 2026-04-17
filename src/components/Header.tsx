@@ -130,7 +130,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <Link
               to="/contact"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-stone-900 text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-stone-700 transition-all duration-300 no-underline rounded-none shrink-0 shadow-sm"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-stone-900 text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-stone-700 transition-all duration-300 no-underline rounded-sm shrink-0 shadow-sm"
             >
               {t('nav.cta')}
             </Link>

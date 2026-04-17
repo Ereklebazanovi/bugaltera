@@ -1,62 +1,55 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import logoBalance from '../assets/logoBalance.png'
 
-/**
- * Full-screen "Quiet Luxury" page loader.
- *
- * Shows on every route change (including initial load/refresh):
- *   0 ms  → overlay fades in instantly
- *   80ms  → logo slides up into view
- *  120ms  → thin progress line animates left-to-right
- *  650ms  → setVisible(false) triggers exit
- *  650ms+ → overlay slides up out of frame (550ms ease), revealing new page
- *
- * The #ECEAE5 background matches the Hero section so the transition
- * feels like a single continuous material rather than an alien overlay.
- */
 export default function PageLoader() {
   const { pathname } = useLocation()
   const [visible, setVisible] = useState(true)
 
   useEffect(() => {
     setVisible(true)
-    const tid = setTimeout(() => setVisible(false), 650)
+    const tid = setTimeout(() => setVisible(false), 700)
     return () => clearTimeout(tid)
   }, [pathname])
 
   return (
     <AnimatePresence>
       {visible && (
-      <motion.div
+        <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }} 
-          transition={{ duration: 0.6, ease: 'easeInOut' }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-cream-100"
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-navy-900"
         >
-          {/* Logo wordmark */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col items-center"
-          >
-            <span className="font-sans text-[13px] font-semibold tracking-[0.25em] text-stone-900 uppercase">
-              BALANCE<span className="text-gold-500">101</span>
-            </span>
-            <span className="text-[7px] font-medium tracking-[0.45em] text-stone-400 mt-1.5 uppercase">
-              საბუღალტრო კომპანია
-            </span>
-          </motion.div>
-
-          {/* Progress line — grows left → right */}
-          <motion.div
-            className="mt-7 h-px bg-gold-500 w-14"
-            style={{ transformOrigin: 'left center' }}
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.52, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+          {/* Logo */}
+          <img
+            src={logoBalance}
+            alt="Balance101"
+            className="h-20 w-auto object-contain brightness-0 invert"
           />
+
+          {/* Pulse dots */}
+          <motion.div
+            className="flex items-center gap-1.5 mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            {[0, 1, 2].map((i) => (
+              <motion.span
+                key={i}
+                className="w-1 h-1 rounded-full bg-gold-500"
+                animate={{ opacity: [0.3, 1, 0.3] }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  delay: i * 0.18,
+                  ease: 'easeInOut',
+                }}
+              />
+            ))}
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

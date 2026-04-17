@@ -78,9 +78,7 @@ export default function About() {
       {/* ── Intro ─────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white py-16 md:py-20 px-5 md:px-8">
         {/* "2015" watermark */}
-        <div className="absolute inset-0 flex items-end justify-end pointer-events-none select-none overflow-hidden">
-          <span className="font-serif text-[18rem] md:text-[22rem] text-stone-900 opacity-[0.025] leading-none -mb-10 -mr-6">2015</span>
-        </div>
+        
 
         <motion.div
           className="relative max-w-6xl mx-auto grid md:grid-cols-[1fr_2fr] gap-10 md:gap-20"
