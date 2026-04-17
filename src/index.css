@@ -8,16 +8,16 @@
   --color-navy-700: #1E3A5F;
   --color-navy-600: #243F6E;
 
-  /* Background - Cream / Off-white */
-  --color-cream-50:  #FDFAF5;
-  --color-cream-100: #F5F0E8;
-  --color-cream-200: #EBE4D6;
-  --color-cream-300: #D9CFBC;
+  /* Background - Cool Cream / Off-white */
+  --color-cream-50:  #F7FAFA;
+  --color-cream-100: #EEF4F4;
+  --color-cream-200: #D9EAEA;
+  --color-cream-300: #C4DADA;
 
-  /* Accent - Gold / Bronze */
-  --color-gold-400: #D4AF5A;
-  --color-gold-500: #C9A84C;
-  --color-gold-600: #A0872A;
+  /* Accent - Dusty Rose (client brand color) */
+  --color-gold-400: #d9a3b0;
+  --color-gold-500: #c78f9b;
+  --color-gold-600: #a8737e;
 
   /* Text */
   --color-charcoal: #1C1C1C;
@@ -46,7 +46,7 @@ body {
   overflow-x: hidden;
   max-width: 100%;
   overscroll-behavior-x: none;
-  background-color: #F5F0E8;
+  background-color: #EEF4F4;
   color: #1C1C1C;
   font-family: 'Noto Sans Georgian', 'Inter', system-ui, -apple-system, sans-serif;
   font-weight: 300;            /* default font-light for body copy */

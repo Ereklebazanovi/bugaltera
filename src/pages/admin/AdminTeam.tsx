@@ -86,8 +86,8 @@ async function getCroppedBlob(src: string, pixelCrop: Area): Promise<Blob> {
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
-const CLOUDINARY_CLOUD = "domclcimy";
-const CLOUDINARY_PRESET = "darchia_blog";
+const CLOUDINARY_CLOUD = "dfz0on2vj";
+const CLOUDINARY_PRESET = "balance_preset";
 const ASPECT_RATIO = 3 / 4; // portrait
 
 // ── Component ─────────────────────────────────────────────────────────────────

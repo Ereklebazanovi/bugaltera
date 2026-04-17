@@ -18,12 +18,12 @@ export default function SEO({ title, description, keywords, image, path, canonic
   const { i18n } = useTranslation();
   const lang = i18n.language;
 
-  const defaultTitle = lang === "en" ? "Darchia & Partners — Law Firm in Tbilisi, Georgia" : "დარჩია & პარტნიორები — იურიდიული ფირმა თბილისში";
+  const defaultTitle = lang === "en" ? "Balance101 — Accounting & Financial Services in Tbilisi, Georgia" : "ბალანსი 101 — საბუღალტრო და ფინანსური მომსახურება თბილისში";
   const defaultDescription = lang === "en"
-    ? "Darchia & Partners is a leading law firm in Tbilisi, Georgia, providing expert legal services in civil, criminal, administrative, and corporate law. Contact us for professional legal advice."
-    : "დარჩია & პარტნიორები — წამყვანი იურიდიული ფირმა თბილისში, რომელიც გთავაზობთ მაღალკვალიფიციურ იურიდიულ მომსახურებას სამოქალაქო, სისხლის, ადმინისტრაციულ და კორპორაციულ სამართალში. დაგვიკავშირდით პროფესიონალური იურიდიული კონსულტაციისთვის.";
-  const defaultKeywords = "law firm georgia, lawyers tbilisi, legal services georgia, civil law, criminal law, administrative law, corporate law, darchia partners";
-  const defaultImage = "https://www.darchiapartners.ge/og-default.jpg";
+    ? "Balance101 is a professional accounting and financial services firm in Tbilisi, Georgia, providing bookkeeping, tax consulting, audit, and financial advisory. Contact us for expert financial advice."
+    : "ბალანსი 101 — პროფესიონალური საბუღალტრო და ფინანსური მომსახურება თბილისში. ბუღალტრული აღრიცხვა, საგადასახადო კონსულტაცია, აუდიტი და ფინანსური მრჩეველობა. დაგვიკავშირდით კვალიფიციური კონსულტაციისთვის.";
+  const defaultKeywords = "accounting georgia, bookkeeping tbilisi, tax consulting georgia, audit tbilisi, financial services georgia, balance101, ბალანსი 101";
+  const defaultImage = "https://www.balance101.ge/og-default.jpg";
   const defaultPath = "/";
 
   const fullTitle = title ? `${title}` : defaultTitle;
@@ -31,7 +31,7 @@ export default function SEO({ title, description, keywords, image, path, canonic
   const fullKeywords = keywords || defaultKeywords;
   const fullImage = image || defaultImage;
   const fullPath = path || defaultPath;
-  const fullCanonical = canonical || `https://www.darchiapartners.ge${fullPath}`;
+  const fullCanonical = canonical || `https://www.balance101.ge${fullPath}`;
 
   return (
     <Helmet>
@@ -40,13 +40,13 @@ export default function SEO({ title, description, keywords, image, path, canonic
       <meta name="keywords" content={fullKeywords} />
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type || "website"} />
-      <meta property="og:url" content={`https://www.darchiapartners.ge${fullPath}`} />
+      <meta property="og:url" content={`https://www.balance101.ge${fullPath}`} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={`https://www.darchiapartners.ge${fullPath}`} />
+      <meta property="twitter:url" content={`https://www.balance101.ge${fullPath}`} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={fullDescription} />
       <meta property="twitter:image" content={fullImage} />
@@ -58,9 +58,9 @@ export default function SEO({ title, description, keywords, image, path, canonic
       {/* hreflang links */}
       {/* Add more specific hreflangs if needed, for now using x-default for the main path */}
       {/* Example for a specific page if direct translations exist: */}
-      {/* <link rel="alternate" hrefLang="ka-GE" href={`https://www.darchiapartners.ge/ka${fullPath}`} /> */}
-      {/* <link rel="alternate" hrefLang="en-US" href={`https://www.darchiapartners.ge/en${fullPath}`} /> */}
-      {/* <link rel="alternate" hrefLang="ru-RU" href={`https://www.darchiapartners.ge/ru${fullPath}`} /> */}
+      {/* <link rel="alternate" hrefLang="ka-GE" href={`https://www.balance101.ge/ka${fullPath}`} /> */}
+      {/* <link rel="alternate" hrefLang="en-US" href={`https://www.balance101.ge/en${fullPath}`} /> */}
+      {/* <link rel="alternate" hrefLang="ru-RU" href={`https://www.balance101.ge/ru${fullPath}`} /> */}
       <link rel="alternate" hrefLang="x-default" href={fullCanonical} />
     </Helmet>
   );

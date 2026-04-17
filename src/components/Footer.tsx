@@ -20,7 +20,7 @@ export default function Footer() {
         <div className="sm:col-span-2 lg:col-span-1">
           <Link to="/" className="inline-flex flex-col leading-none no-underline mb-5 group">
             <span className="font-serif text-[17px] tracking-wide text-neutral-900 uppercase group-hover:text-gold-600 transition-colors duration-200">
-              DARCHIA <span className="text-gold-500">&amp;</span> PARTNERS
+              BALANCE<span className="text-gold-500">101</span>
             </span>
             <span className="text-[9px] font-normal tracking-[0.22em] text-neutral-400 mt-1 uppercase">
               {t('layout.header.subtitle')}
@@ -107,7 +107,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
 
           <p className="text-[11px] text-neutral-400 tracking-wide">
-            &copy; {new Date().getFullYear()} Darchia &amp; Partners. {t('layout.footer.copyright')}
+            &copy; {new Date().getFullYear()} Balance101. {t('layout.footer.copyright')}
           </p>
 
           <div className="flex items-center gap-4 text-[11px] text-neutral-400">

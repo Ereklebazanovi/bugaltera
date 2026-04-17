@@ -64,11 +64,11 @@ export default function Services() {
   return (
     <>
       <SEO
-        title="იურიდიული სერვისები — Darchia & Partners"
-        description="სამოქალაქო, სისხლის, ადმინისტრაციული და კორპორატიული სამართლის სერვისები. კვალიფიციური ადვოკატები თბილისში — მიიღეთ პროფესიონალური კონსულტაცია."
-        keywords="legal services georgia, civil law tbilisi, criminal defense georgia, administrative law lawyer, contract disputes georgia, property law tbilisi, family law georgia, darchia services"
+        title="ფინანსური სერვისები — Balance101 • ბალანსი 101"
+        description="ბუღალტრული აღრიცხვა, საგადასახადო კონსულტაცია, ფინანსური აუდიტი და კონსულტაცია. კვალიფიციური სპეციალისტები თბილისში — მიიღეთ პროფესიონალური კონსულტაცია."
+        keywords="financial services georgia, accounting tbilisi, tax consulting georgia, bookkeeping tbilisi, financial audit georgia, balance101 services"
         path="/services"
-        canonical="https://www.darchiapartners.ge/services"
+        canonical="https://www.balance101.ge/services"
       />
       <Helmet>
         <link rel="preload" as="image" type="image/webp" href={practiceHero} />

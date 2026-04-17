@@ -96,9 +96,9 @@ export default function Partners() {
   return (
     <>
       <SEO
-        title="პარტნიორები — Darchia & Partners"
-        description={"გაიცანით Darchia & Partners-ის სანდო პარტნიორები — წამყვანი ორგანიზაციები და კორპორატიული სამართლებრივი პარტნიორობა საქართველოს წამყვან ბანკებთან და ბიზნეს-სტრუქტურებთან."}
-        keywords="darchia partners, law firm partners georgia, corporate legal partners, TBC bank legal, AmCham Georgia, სამართლებრივი პარტნიორობა, კორპორატიული სამართალი"
+        title="პარტნიორები — Balance101 • ბალანსი 101"
+        description={"გაიცანით Balance101-ის სანდო პარტნიორები — წამყვანი ორგანიზაციები და კორპორატიული ფინანსური პარტნიორობა საქართველოს წამყვან ბანკებთან და ბიზნეს-სტრუქტურებთან."}
+        keywords="balance101 partners, accounting firm partners georgia, corporate financial partners, TBC bank accounting, AmCham Georgia, ფინანსური პარტნიორობა, კორპორატიული მომსახურება"
         path="/partners"
       />
       {/* ── Dark full-image hero — left-aligned ───────────────────────────── */}

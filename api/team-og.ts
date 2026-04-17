@@ -5,10 +5,10 @@
 
 export const config = { runtime: 'edge' }
 
-const SITE_NAME    = 'დარჩია და პარტნიორები'
-const DEFAULT_TITLE = `${SITE_NAME} — საადვოკატო ბიურო`
+const SITE_NAME    = 'ბალანსი 101'
+const DEFAULT_TITLE = `${SITE_NAME} — საბუღალტრო კომპანია`
 const DEFAULT_DESC  =
-  'დარჩია და პარტნიორები — საქართველოში კორპორატიული სამართლის, დავების მოგვარებისა და უძრავი ქონების სფეროში გამოცდილი იურიდიული დახმარება.'
+  'ბალანსი 101 — საქართველოში ბუღალტრული მომსახურების, საგადასახადო კონსულტაციის, აუდიტისა და ფინანსური მრჩეველობის სფეროში პროფესიონალური დახმარება.'
 
 function esc(s: string): string {
   return s
@@ -33,7 +33,7 @@ export default async function handler(request: Request): Promise<Response> {
   const { searchParams } = new URL(request.url)
   const slug = searchParams.get('slug') ?? ''
 
-  const SITE_URL   = ((process.env.VITE_SITE_URL   as string | undefined) ?? 'https://www.darchiapartners.ge').replace(/\/$/, '')
+  const SITE_URL   = ((process.env.VITE_SITE_URL   as string | undefined) ?? 'https://www.balance101.ge').replace(/\/$/, '')
   const API_KEY    = process.env.VITE_FIREBASE_API_KEY    as string
   const PROJECT_ID = process.env.VITE_FIREBASE_PROJECT_ID as string
 

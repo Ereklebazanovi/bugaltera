@@ -37,7 +37,7 @@ export default function AdminLogin() {
         {/* Header */}
         <div className="text-center mb-10">
           <p className="text-xs tracking-[0.3em] uppercase text-gold-500 mb-3">
-            Darchia &amp; Partners
+            Balance101
           </p>
           <h1 className="font-serif text-3xl text-navy-900 tracking-tight">
             Admin Portal
@@ -59,7 +59,7 @@ export default function AdminLogin() {
                 required
                 autoComplete="email"
                 className="w-full border border-cream-200 bg-cream-50 px-4 py-3 text-sm text-charcoal placeholder-charcoal/30 focus:outline-none focus:border-navy-700 transition-colors"
-                placeholder="admin@darchia.law"
+                placeholder="admin@balance101.ge"
               />
             </div>
 

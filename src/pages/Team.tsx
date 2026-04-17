@@ -75,9 +75,9 @@ export default function Team() {
   return (
     <>
       <SEO
-        title={"გუნდი — Darchia & Partners"}
-        description={"გაიცანით Darchia & Partners-ის გამოცდილი ადვოკატები და იურიდიული სპეციალისტების გუნდი. სამოქალაქო, სისხლის და ადმინისტრაციული სამართლის პროფესიონალები თბილისში."}
-        keywords={"ადვოკატები თბილისში, გამოცდილი იურისტები, იურიდიული გუნდი, lawyers tbilisi, attorneys georgia, darchia team, experienced lawyers georgia, legal team tbilisi"}
+        title={"გუნდი — Balance101 • ბალანსი 101"}
+        description={"გაიცანით Balance101-ის გამოცდილი ბუღალტრები და ფინანსური კონსულტანტები. პროფესიონალი სპეციალისტები თბილისში, ბიზნესის ფინანსური სტაბილურობისთვის."}
+        keywords={"ბუღალტრები თბილისში, ფინანსური კონსულტანტები, საბუღალტრო გუნდი, accountants tbilisi, financial consultants georgia, balance101 team, accounting specialists tbilisi"}
         path="/team"
       />
 

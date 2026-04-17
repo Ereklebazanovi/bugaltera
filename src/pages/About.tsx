@@ -33,9 +33,9 @@ export default function About() {
   return (
     <>
       <SEO
-        title="ჩვენ შესახებ — Darchia & Partners"
-        description="გაიცანით Darchia & Partners — 2015 წლიდან კვალიფიციური იურიდიული მომსახურება. გამოცდილი ადვოკატები, პროფესიული ეთიკა, კონფიდენციალობა."
-        keywords={"საადვოკატო ბიურო, იურიდიული გუნდი, ადვოკატები 2015, darchia partners about, law firm georgia history, qualified lawyers tbilisi, attorney georgia, legal team tbilisi"}
+        title="ჩვენ შესახებ — Balance101 • ბალანსი 101"
+        description="გაიცანით Balance101 — პროფესიონალური საბუღალტრო კომპანია თბილისში. გამოცდილი ბუღალტრები, ფინანსური კონსულტაციები და საგადასახადო სერვისები."
+        keywords={"საბუღალტრო კომპანია, ფინანსური მომსახურება, ბუღალტრული გუნდი, balance101 about, accounting firm georgia, financial services tbilisi, accountants georgia"}
         path="/about"
       />
 

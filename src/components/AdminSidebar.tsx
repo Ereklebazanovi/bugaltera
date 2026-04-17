@@ -68,7 +68,7 @@ export default function AdminSidebar({ isOpen, onClose }: Props) {
       >
         <div className="px-6 py-5 border-b border-white/10 flex items-center justify-between">
           <div>
-            <p className="text-sm font-semibold text-white">Darchia & Partners</p>
+            <p className="text-sm font-semibold text-white">Balance101</p>
             <p className="text-xs text-slate-400 mt-0.5">ადმინისტრაციული პანელი</p>
           </div>
           <button

@@ -52,8 +52,8 @@ export default function LegalPage({ pageKey }: Props) {
     : "";
 
   const seoMeta = pageKey === 'privacy'
-    ? { title: 'კონფიდენციალობის პოლიტიკა — Darchia & Partners', path: '/privacy' as const }
-    : { title: 'მომსახურების პირობები — Darchia & Partners',      path: '/terms'   as const }
+    ? { title: 'კონფიდენციალობის პოლიტიკა — Balance101', path: '/privacy' as const }
+    : { title: 'მომსახურების პირობები — Balance101',      path: '/terms'   as const }
 
   return (
     <div className="bg-white min-h-screen">

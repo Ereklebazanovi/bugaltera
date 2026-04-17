@@ -11,19 +11,19 @@
   "layout": {
     "header": {
       "callAriaLabel": "Call us",
-      "subtitle": "Attorneys at Law",
+      "subtitle": "Professional Services",
       "mobileMenuOpen": "MENU",
       "mobileMenuClose": "CLOSE"
     },
     "footer": {
-      "tagline": "Legal services of the highest standard, protecting your business and personal interests.",
+      "tagline": "Accounting, business administration, and legal support - all in one place.",
       "contactHeading": "Contact",
-      "location": "Tbilisi, D. Aghmashenebeli Ave. 66b, 4th Floor, Apt. N6",
-      "areasHeading": "Practice Areas",
+      "location": "Tbilisi, Lezhava St. N22, Office A001",
+      "areasHeading": "Services",
       "areas": [
-        "Civil Law",
-        "Administrative Law",
-        "Criminal Law"
+        "Accounting Services",
+        "Business Administration",
+        "Legal Support"
       ],
       "copyright": "All Rights Reserved.",
       "terms": "Terms & Conditions",
@@ -47,25 +47,21 @@
       ],
       "servicesHeading": "Services",
       "servicesList": [
-        "Civil Law",
-        "Administrative Law",
-        "Criminal Law"
+        "Accounting Services",
+        "Business Administration",
+        "Legal Support"
       ],
       "phones": [
         {
-          "display": "+995 593 93 00 77",
-          "href": "tel:+995593930077"
+          "display": "+995 511 411 604",
+          "href": "tel:+995511411604"
         },
         {
-          "display": "+995 591 88 00 82",
-          "href": "tel:+995591880082"
-        },
-        {
-          "display": "(0322) 11 05 06",
-          "href": "tel:+995322110506"
+          "display": "032 219 08 39",
+          "href": "tel:+995322190839"
         }
       ],
-      "email": "info@darchiapartners.ge",
+      "email": "Balance.101@Outlook.com",
       "credit": "Developed by Invento Technologies"
     },
     "bottomNav": {
@@ -74,52 +70,52 @@
   },
   "home": {
     "hero": {
-      "imgAlt": "Darchia & Partners — Office Interior",
-      "eyebrow": "Law Office",
-      "tagline": "20 Years – At Your Service",
-      "heading1": "Legal Protection.",
-      "heading2": "Strategic Results.",
-      "subCopy": "We provide comprehensive legal representation for individuals and corporate entities, safeguarding their interests at every stage of dispute resolution. Our firm brings decades of proven expertise across civil, administrative, and criminal law.",
-      "cta1": "Request a Consultation",
-      "cta2": "Practice Areas",
+      "imgAlt": "Balance101 - Office Interior",
+      "eyebrow": "Professional Services",
+      "tagline": "Your Trusted Partner in Financial Stability.",
+      "heading1": "Financial Precision.",
+      "heading2": "Guaranteed Business Growth.",
+      "subCopy": "Providing a full spectrum of accounting, business administration, and legal support services. We solve complex challenges so you can focus on growing your business.",
+      "cta1": "Free Consultation",
+      "cta2": "Our Services",
       "stats": [
-        "Years of Legal Practice",
-        "Corporate Partners",
-        "Core Practice Areas"
+        "Years of Professional Experience",
+        "Satisfied Partner Companies",
+        "Successfully Completed Audits"
       ]
     },
     "services": {
-      "eyebrow": "Our Areas",
-      "heading": "Areas of Legal Practice",
+      "eyebrow": "Our Services",
+      "heading": "Complete Professional Services",
       "learnMore": "Learn More",
       "areas": [
         {
-          "title": "Civil Law",
-          "desc": "Resolution of property, contractual, and family disputes. Full representation and advocacy at every level of the judicial system."
+          "title": "Accounting Services",
+          "desc": "Financial record-keeping, tax reporting, and preparation of balance sheets and financial statements according to international standards."
         },
         {
-          "title": "Administrative Law",
-          "desc": "Disputes with public authorities, licensing, permitting, and the full spectrum of public law matters."
+          "title": "Business Administration",
+          "desc": "Organisation of operational processes, strategic planning and analysis, document management and optimisation."
         },
         {
-          "title": "Criminal Law",
-          "desc": "Rigorous defence at every stage — from initial investigation through prosecution to final adjudication."
+          "title": "Legal Support",
+          "desc": "Contract preparation and review, legal consultations, and ensuring compliance with applicable regulations."
         }
       ],
       "contact": {
         "quickLine": "Direct Line",
         "hoursLabel": "Working Hours",
-        "hours": "Mon – Fri · 10:00 – 20:00 (GET)",
+        "hours": "Mon – Fri · 10:00 – 18:00 (GET)",
         "cta": "Schedule a Consultation"
       }
     }
   },
   "servicesPage": {
     "hero": {
-      "eyebrow": "Our Practice Areas",
-      "heading1": "Areas of",
-      "heading2": "Legal Practice",
-      "subCopy": "Legal services tailored to the comprehensive protection of your business and personal interests."
+      "eyebrow": "Our Services",
+      "heading1": "Complete Professional",
+      "heading2": "Services",
+      "subCopy": "Accounting, business administration, and legal support - everything your business needs for growth and stability."
     },
     "cards": {
       "subServicesLabel": "Key Areas:",
@@ -127,48 +123,48 @@
     },
     "services": [
       {
-        "title": "Civil Law",
-        "desc": "We represent and protect your interests in complex civil disputes, providing a tailored strategy for the effective resolution of property, contractual, and family matters — in your favour.",
+        "title": "Accounting Services",
+        "desc": "We manage the full accounting cycle with precision. Our experienced accountants ensure the accuracy of your financial documentation and full compliance with applicable legislation.",
         "subServices": [
-          "Contractual Disputes",
-          "Property & Real Rights Disputes",
-          "Family & Succession Disputes",
-          "Tort & Damages Claims",
-          "Employment Disputes"
+          "Financial record-keeping",
+          "Tax reporting & filing",
+          "Balance sheet & financial statement preparation",
+          "Payroll & HR administration",
+          "Cash flow management"
         ]
       },
       {
-        "title": "Administrative Law",
-        "desc": "Engagement with public authorities demands specialised legal expertise. We safeguard your interests in administrative disputes and ensure the unimpeded obtaining of licences and permits.",
+        "title": "Business Administration",
+        "desc": "Effective management of business processes to achieve strategic growth. We help companies overcome operational challenges and optimise their operations for maximum efficiency.",
         "subServices": [
-          "Representation before Public Authorities",
-          "Tax & Customs Disputes",
-          "Licensing & Permitting",
-          "Tenders & Public Procurement",
-          "Administrative Offences"
+          "Organisation of operational processes",
+          "Strategic planning & analysis",
+          "Document management & optimisation",
+          "Business plan development",
+          "Management reporting"
         ]
       },
       {
-        "title": "Criminal Law",
-        "desc": "In criminal proceedings, professional defence counsel is of critical importance. Our experienced attorneys ensure the full and effective protection of your rights at every stage of the proceedings.",
+        "title": "Legal Support",
+        "desc": "Legal matters are an inseparable part of business operations. We provide comprehensive legal protection - from contract drafting to ensuring full regulatory compliance.",
         "subServices": [
-          "Defence during the Investigative Stage",
-          "Court Representation",
-          "Preventive Measures & Detention",
-          "Appeals to Superior Courts",
-          "Official & Economic Crimes"
+          "Contract preparation & review",
+          "Legal consultations",
+          "Regulatory compliance assurance",
+          "Corporate legal support",
+          "Liaison with government authorities"
         ]
       }
     ],
     "stats": [
       {
-        "label": "Years of Legal Practice"
+        "label": "Years of Professional Experience"
       },
       {
-        "label": "Successfully Concluded Cases"
+        "label": "Satisfied Partner Companies"
       },
       {
-        "label": "Retained Corporate Partners"
+        "label": "Successfully Completed Audits"
       }
     ],
     "teamCta": {
@@ -185,27 +181,27 @@
     "intro": {
       "eyebrow": "About the Firm",
       "heading": "Who We Are",
-      "body": "Founded in 2015, Darchia & Partners has established itself on the market as a trusted legal partner. Our team brings together highly qualified professionals whose years of practical experience and academic achievements guarantee maximum legal protection for our clients."
+      "body": "Balance101 is a professional services company specialising in accounting, business administration, and legal support. Our goal is to offer clients comprehensive and reliable services that ensure the growth, stability, and regulatory compliance of their operations."
     },
     "whyUs": {
       "eyebrow": "Our Strengths",
       "heading": "Why Choose Our Team?",
       "bullets": [
         {
+          "title": "Comprehensive Service",
+          "desc": "From accounting to business administration and legal consulting - all the services you need in one place, saving your time and resources."
+        },
+        {
           "title": "Years of Experience",
-          "desc": "The firm is led by an attorney with over 20 years of practice, supported by lawyers with more than 10 years of experience and distinguished academic credentials."
+          "desc": "Our team brings together highly qualified specialists whose practical expertise ensures maximum efficiency for every client's business."
         },
         {
-          "title": "Wide Specialisation",
-          "desc": "We provide defence and representation for clients across criminal, civil, and administrative law."
+          "title": "Regulatory Compliance",
+          "desc": "We continuously monitor legislative changes and ensure that our clients' operations remain fully compliant with current requirements."
         },
         {
-          "title": "Corporate Expertise",
-          "desc": "For years, our firm has successfully served companies across various sectors, ensuring sound legal decision-making for each of them."
-        },
-        {
-          "title": "Academic Engagement",
-          "desc": "Team members are actively involved in educational activities, leading university programmes and authoring academic publications — enabling us to apply innovative approaches to complex legal matters."
+          "title": "Individual Approach",
+          "desc": "Every client is unique. We develop tailored strategies that precisely address the specific needs and goals of each business."
         }
       ]
     },
@@ -219,37 +215,35 @@
         },
         {
           "title": "Professional Ethics",
-          "desc": "We operate in strict adherence to the highest standards of legal ethics, which is the foundation of the trust our clients place in us."
+          "desc": "We operate in strict adherence to the highest standards of professional ethics, which is the foundation of the trust our clients place in us."
         },
         {
-          "title": "Innovation",
-          "desc": "We continuously monitor legislative changes and judicial practice to offer our clients modern and effective legal solutions."
+          "title": "Results-Oriented",
+          "desc": "The growth and stability of our clients' businesses is our measure of success. Every decision we make is guided by this goal."
         }
       ]
     },
     "languages": {
       "eyebrow": "Languages of Service",
-      "heading": "We Serve in Five Languages",
+      "heading": "We Serve in Three Languages",
       "list": [
         "Georgian",
         "English",
-        "Russian",
-        "German",
-        "Ukrainian"
+        "Russian"
       ]
     },
     "mission": {
       "eyebrow": "Our Mission",
-      "body": "Our mission is to create a secure legal environment for our partners by combining theoretical knowledge with rich practical experience. The measure of our success is the trust and satisfaction of our clients."
+      "body": "Our mission is to offer clients comprehensive and reliable professional services that ensure the growth, stability, and regulatory compliance of their operations. The measure of our success is the trust and satisfaction of our clients."
     }
   },
   "partnersPage": {
     "hero": {
-      "imgAlt": "Darchia & Partners — Office and Partners",
+      "imgAlt": "Balance101 - Office and Partners",
       "eyebrow": "Trusted Partnerships",
       "heading1": "Professional Integrity.",
       "heading2": "Built on Trust.",
-      "subCopy": "Darchia & Partners provides comprehensive legal support to corporate clients and organizations at every stage of their operations."
+      "subCopy": "Balance101 provides comprehensive support to corporate clients and organizations at every stage of their operations."
     },
     "partners": {
       "tbc": {
@@ -282,19 +276,19 @@
     "becomePartner": {
       "eyebrow": "Become a Partner",
       "heading": "Interested in Collaboration?",
-      "subCopy": "We are seeking new partner organisations from the financial, legal, and international sectors. Contact us to explore the possibilities.",
+      "subCopy": "We are open to strategic partnerships with local and international organisations, offering high-standard professional services to our clients.",
       "cta": "Get in Touch"
     }
   },
   "teamPage": {
     "hero": {
       "eyebrow": "Our Team",
-      "heading1": "Experienced Attorneys",
+      "heading1": "Experienced Specialists",
       "heading2": "By Your Side",
-      "subCopy": "Our team comprises leading specialists in their respective fields, each capable of meeting any legal challenge with precision and expertise."
+      "subCopy": "Our team comprises leading accountants and consultants, each capable of meeting any business challenge with precision and expertise."
     },
     "grid": {
-      "eyebrow": "Our Attorneys",
+      "eyebrow": "Our Specialists",
       "viewProfile": "View Profile"
     },
     "modal": {
@@ -315,29 +309,29 @@
     }
   },
   "consultationBanner": {
-    "heading": "Need Legal Counsel?",
-    "subCopy": "Our experienced attorneys are prepared to assist you.",
+    "heading": "Need Expert Advice?",
+    "subCopy": "Our experienced specialists are ready to assist you.",
     "cta": "Request a Consultation"
   },
   "contact": {
     "eyebrow": "Contact",
     "title": "Request a Consultation",
-    "description": "Fill in the form to book an initial consultation. Our attorney will contact you shortly to discuss the details.",
+    "description": "Fill in the form to book an initial consultation. Our specialist will contact you shortly to discuss the details.",
     "optional": "(optional)",
     "fields": {
       "name": "Full Name",
       "namePlaceholder": "John Smith",
       "phone": "Phone Number",
       "email": "Email",
-      "topic": "Practice Area",
-      "topicPlaceholder": "Select an area",
+      "topic": "Service Type",
+      "topicPlaceholder": "Select a service",
       "message": "Message",
-      "messagePlaceholder": "Briefly describe your issue..."
+      "messagePlaceholder": "Briefly describe your needs..."
     },
     "topics": [
-      "Civil Law",
-      "Administrative Law",
-      "Criminal Law",
+      "Accounting Services",
+      "Business Administration",
+      "Legal Support",
       "Other"
     ],
     "errors": {
@@ -362,7 +356,7 @@
     "location": {
       "eyebrow": "Location",
       "heading": "Our Office",
-      "address": "66b D. Aghmashenebeli Ave",
+      "address": "Lezhava St. N22, Office A001",
       "city": "Tbilisi, Georgia",
       "directions": "View on Google Maps"
     }

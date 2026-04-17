@@ -5,7 +5,7 @@
 
 export const config = { runtime: 'edge' }
 
-const SITE = 'https://www.darchiapartners.ge'
+const SITE = 'https://www.balance101.ge'
 
 // ── Static pages ──────────────────────────────────────────────────────────────
 

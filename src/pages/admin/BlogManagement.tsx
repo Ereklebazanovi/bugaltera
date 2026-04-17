@@ -41,8 +41,8 @@ interface Post {
   createdAt: { toDate: () => Date } | null;
 }
 
-const CLOUDINARY_CLOUD = "domclcimy";
-const CLOUDINARY_PRESET = "darchia_blog";
+const CLOUDINARY_CLOUD = "dfz0on2vj";
+const CLOUDINARY_PRESET = "balance_preset";
 const ASPECT_RATIO = 16 / 9;
 
 // ── Crop helpers ──────────────────────────────────────────────────────────────

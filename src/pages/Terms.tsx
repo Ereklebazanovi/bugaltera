@@ -5,10 +5,10 @@ export default function Terms() {
   return (
     <>
       <SEO
-        title="Terms and Conditions — Darchia & Partners"
-        description="Read the terms and conditions of Darchia & Partners. Understand your rights and obligations when using our services."
+        title="Terms and Conditions — Balance101"
+        description="Read the terms and conditions of Balance101. Understand your rights and obligations when using our services."
         path="/terms"
-        canonical="https://www.darchiapartners.ge/terms"
+        canonical="https://www.balance101.ge/terms"
       />
       <LegalPage pageKey="terms" />;
     </>

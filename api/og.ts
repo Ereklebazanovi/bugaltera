@@ -5,10 +5,10 @@
 
 export const config = { runtime: 'edge' }
 
-const SITE_NAME = 'Darchia & Partners'
-const DEFAULT_TITLE = `${SITE_NAME} — Attorneys at Law`
+const SITE_NAME = 'Balance101'
+const DEFAULT_TITLE = `${SITE_NAME} — Accounting & Financial Services`
 const DEFAULT_DESC =
-  'Darchia & Partners — Expert legal counsel in corporate law, dispute resolution, and real estate in Georgia.'
+  'Balance101 — Professional accounting, tax consulting, audit, and financial advisory services in Tbilisi, Georgia.'
 
 function esc(s: string): string {
   return s
@@ -33,7 +33,7 @@ export default async function handler(request: Request): Promise<Response> {
 
   // These are available in Vercel's Edge Runtime from the project's env vars.
   const SITE_URL =
-    ((process.env.VITE_SITE_URL as string | undefined) ?? 'https://www.darchiapartners.ge').replace(/\/$/, '')
+    ((process.env.VITE_SITE_URL as string | undefined) ?? 'https://www.balance101.ge').replace(/\/$/, '')
   const API_KEY = process.env.VITE_FIREBASE_API_KEY as string
   const PROJECT_ID = process.env.VITE_FIREBASE_PROJECT_ID as string
 

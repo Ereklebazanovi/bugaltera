@@ -149,7 +149,7 @@ export default function TeamProfile() {
         description={bio.slice(0, 160)}
         image={member.photoUrl}
         path={`/team/${slug}`}
-        canonical={`https://www.darchiapartners.ge/team/${slug}`}
+        canonical={`https://www.balance101.ge/team/${slug}`}
       />
 
       <div className="bg-[#ECEAE5] min-h-screen">

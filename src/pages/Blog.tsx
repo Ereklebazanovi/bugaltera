@@ -99,11 +99,11 @@ const getTitle = (p: Post) => i18n.language === 'en' ? (p.title_en || p.title_ka
   return (
     <>
       <SEO
-        title="იურიდიული სტატიები და სიახლეები — Darchia & Partners"
-        description="წაიკითხეთ საინტერესო სტატიები სამართლის სხვადასხვა სფეროზე Darchia & Partners-ის ადვოკატებისგან. სამოქალაქო, სისხლის, კორპორატიული და ადმინისტრაციული სამართალი."
-        keywords="legal blog georgia, law articles tbilisi, georgian law analysis, civil law blog, criminal law news georgia, legal news 2025, darchia blog"
+        title="სტატიები და სიახლეები — Balance101 • ბალანსი 101"
+        description="წაიკითხეთ საინტერესო სტატიები ბუღალტრულ, საგადასახადო და ფინანსურ თემებზე Balance101-ის სპეციალისტებისგან. ფინანსური ანალიტიკა ბიზნესისთვის."
+        keywords="accounting blog georgia, financial articles tbilisi, tax consulting news, bookkeeping tips georgia, financial analysis 2025, balance101 blog"
         path="/blog"
-        canonical="https://www.darchiapartners.ge/blog"
+        canonical="https://www.balance101.ge/blog"
       />
 
       {/* ── Typographic hero ──────────────────────────────────────────────── */}

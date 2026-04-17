@@ -122,7 +122,8 @@ export default function BentoGrid() {
                       {t('home.services.contact.quickLine')}
                     </p>
                     <p className="font-serif text-2xl md:text-3xl text-stone-900 font-semibold leading-tight">
-                      +995 593 93 00 77
+                      032 219 08 39
+
                     </p>
                   </div>
                 </div>

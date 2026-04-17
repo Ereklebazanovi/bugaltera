@@ -252,7 +252,7 @@ async function handleConfirm() {
       // 3. ვამზადებთ ექსთენშენისთვის პირველ დავალებას (ადმინთან გაგზავნა)
       const mailPromises: Promise<unknown>[] = [
         addDoc(collection(db, 'mail'), {
-          to: 'info@darchiapartners.ge', // ეს გადასაცვლელია იმ ადმინის მეილზე, ვინც უნდა მიიღოს შეტყობინება
+          to: 'Balance.101@Outlook.com', // ეს გადასაცვლელია იმ ადმინის მეილზე, ვინც უნდა მიიღოს შეტყობინება
 
           message: {
             subject: `ახალი შეტყობინება საიტიდან: ${form.name}`,
@@ -270,8 +270,8 @@ async function handleConfirm() {
             <p>თქვენი შეტყობინება წარმატებით მივიღეთ. ჩვენი გუნდის წევრი გაეცნობა თქვენს საკითხს და უმოკლეს დროში დაგიკავშირდებათ მითითებულ ნომერზე ან ელ-ფოსტაზე.</p>
             <br>
             <p style="margin-bottom: 5px;">პატივისცემით,</p>
-            <p style="margin-top: 0;"><strong>Darchia & Partners</strong><br>
-            <span style="font-size: 12px; color: #78716c;">იურიდიული მომსახურება</span></p>
+            <p style="margin-top: 0;"><strong>Balance101</strong><br>
+            <span style="font-size: 12px; color: #78716c;">საბუღალტრო და ფინანსური მომსახურება</span></p>
           </div>
         `;
 
@@ -279,9 +279,9 @@ async function handleConfirm() {
 mailPromises.push(
           addDoc(collection(db, 'mail'), {
             to: userEmail,
-            replyTo: 'info@darchiapartners.ge', // ეს გადასაცვლელია იმ მეილზე, საიდანაც გინდა რომ პასუხი მოვიდეს (შეიძლება იგივე იყოს, რაც ადმინის მეილი) ანუ მათ რეალურ ბიუროს მეილი უნდა შევიყვანო რომ რეფლი პირდაპირ იქ წავიდეს
+            replyTo: 'Balance.101@Outlook.com', // ეს გადასაცვლელია იმ მეილზე, საიდანაც გინდა რომ პასუხი მოვიდეს (შეიძლება იგივე იყოს, რაც ადმინის მეილი) ანუ მათ რეალურ ბიუროს მეილი უნდა შევიყვანო რომ რეფლი პირდაპირ იქ წავიდეს
             message: {
-              subject: 'Darchia & Partners - შეტყობინება მიღებულია',
+              subject: 'Balance101 - შეტყობინება მიღებულია',
               html: userHtml,
             },
           }),
@@ -307,9 +307,9 @@ mailPromises.push(
   return (
     <div className="bg-white min-h-screen">
       <SEO
-        title="დაგვიკავშირდით — Darchia & Partners"
-        description="დაუკავშირდით Darchia & Partners-ის გუნდს. მიიღეთ პროფესიონალური იურიდიული კონსულტაცია თბილისში. +995 593 93 00 77 | info@darchiapartners.ge"
-        keywords="contact lawyer tbilisi, legal consultation georgia, free legal advice tbilisi, +995593930077, darchia contact, law firm phone tbilisi"
+        title="დაგვიკავშირდით — Balance101 • ბალანსი 101"
+        description="დაუკავშირდით Balance101-ის გუნდს. მიიღეთ პროფესიონალური საბუღალტრო და ფინანსური კონსულტაცია თბილისში."
+        keywords="contact accountant tbilisi, accounting consultation georgia, bookkeeping services tbilisi, balance101 contact, financial services phone tbilisi"
         path="/contact"
       />
 
@@ -479,16 +479,17 @@ mailPromises.push(
 
         {/* ── Contact strip ────────────────────────────────────────────────── */}
         <div className="mt-10 pt-6 border-t border-stone-100 flex flex-col sm:flex-row gap-3 sm:gap-8">
-          <a href="tel:+995593930077" className="flex items-center gap-2.5 no-underline group">
+          <a href="tel:+995511411604" className="flex items-center gap-2.5 no-underline group">
             <Phone size={13} strokeWidth={1.5} className="text-stone-400 shrink-0" />
             <span className="text-stone-700 text-sm font-light group-hover:text-stone-900 transition-colors duration-200">
-              +995 593 93 00 77
+             032 219 08 39
+
             </span>
           </a>
-          <a href="mailto:info@darchiapartners.ge" className="flex items-center gap-2.5 no-underline group">
+          <a href="mailto:Balance.101@Outlook.com" className="flex items-center gap-2.5 no-underline group">
             <Mail size={13} strokeWidth={1.5} className="text-stone-400 shrink-0" />
             <span className="text-stone-700 text-sm font-light group-hover:text-stone-900 transition-colors duration-200">
-              info@darchiapartners.ge
+              Balance.101@Outlook.com
             </span>
           </a>
         </div>
@@ -518,8 +519,8 @@ mailPromises.push(
             {/* Map */}
             <div className="w-full aspect-square sm:aspect-16/10 md:aspect-video">
               <iframe
-                title="Darchia & Partners"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.5837512906633!2d44.767149499999995!3d41.7726315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440dde4d82ff2b%3A0x28cea190d5c3d073!2zRGFyY2hpYSAmIFBhcnRuZXJzIC8g4YOT4YOQ4YOg4YOp4YOY4YOQICYg4YOe4YOQ4YOg4YOi4YOc4YOY4YOd4YOg4YOU4YOR4YOY!5e0!3m2!1sen!2sge!4v1774463014809!5m2!1sen!2sge"
+                title="Balance101"
+                src="[PLACEHOLDER_MAPS_EMBED_URL]"
                 width="100%"
                 height="100%"
                 loading="lazy"
@@ -548,7 +549,7 @@ mailPromises.push(
 
               {/* Directions button */}
               <a
-                href="https://www.google.com/maps/place/Darchia+%26+Partners/+%2F+%E1%83%93%E1%83%90%E1%83%A0%E1%83%A9%E1%83%98%E1%83%90+%26+%E1%83%9E%E1%83%90%E1%83%A0%E1%83%A2%E1%83%9C%E1%83%98%E1%83%9D%E1%83%A0%E1%83%94%E1%83%91%E1%83%98/@41.7726315,44.7671495,17z/data=!3m1!4b1!4m6!3m5!1s0x40440dde4d82ff2b:0x28cea190d5c3d073!8m2!3d41.7726315!4d44.7671495!16s%2Fg%2F11y3glrp83"
+                href="[PLACEHOLDER_MAPS_URL]"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-stone-900 text-white text-[10px] tracking-[0.18em] uppercase font-semibold rounded-lg hover:bg-stone-800 transition-colors duration-200 no-underline shrink-0"

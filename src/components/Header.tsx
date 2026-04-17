@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Phone, Menu, X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import logoBalance from '../assets/logoBalance.png'
 
 const NAV_LINKS = [
   { key: 'nav.home',     to: '/'         },
@@ -52,13 +53,8 @@ export default function Header() {
         <nav className="relative max-w-7xl mx-auto px-6 lg:px-8 h-14 lg:h-16 flex items-center justify-between">
 
           {/* Left: Logo */}
-          <Link to="/" className="flex flex-col leading-none no-underline shrink-0 hover:opacity-80 transition-opacity duration-200">
-            <span className="font-serif text-[13px] md:text-xl tracking-normal md:tracking-wide text-stone-900 uppercase">
-              DARCHIA <span className="text-stone-400">&amp;</span> PARTNERS
-            </span>
-            <span className="text-[8px] md:text-[9px] font-normal tracking-[0.2em] text-stone-400 mt-0.5 uppercase">
-              {t('layout.header.subtitle')}
-            </span>
+          <Link to="/" className="flex items-center no-underline shrink-0 hover:opacity-80 transition-opacity duration-200">
+            <img src={logoBalance} alt="Balance101" className="h-24 md:h-24 w-auto object-contain lg:mt-3 md:mt-2 sm:mt-3" />
           </Link>
 
           {/* Center: Nav links — absolutely centered, desktop only */}
@@ -112,7 +108,7 @@ export default function Header() {
 
             {/* Mobile: phone */}
             <a
-              href="tel:+995593930077"
+              href="tel:+995322190839"
               className="lg:hidden flex items-center justify-center w-8 h-8 border border-stone-300 rounded-full text-stone-700 hover:border-stone-500 hover:text-stone-900 transition-all duration-200"
               aria-label={t('layout.header.callAriaLabel')}
             >
@@ -159,14 +155,9 @@ export default function Header() {
               <Link
                 to="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex flex-col leading-none no-underline"
+                className="flex items-center no-underline"
               >
-                <span className="font-serif text-[15px] tracking-normal text-white uppercase">
-                  DARCHIA <span className="text-gold-400">&amp;</span> PARTNERS
-                </span>
-                <span className="text-[7px] font-normal tracking-[0.2em] text-stone-500 mt-0.5 uppercase">
-                  {t('layout.header.subtitle')}
-                </span>
+                <img src={logoBalance} alt="Balance101" className="h-8 w-auto object-contain brightness-0 invert" />
               </Link>
               <button
                 type="button"

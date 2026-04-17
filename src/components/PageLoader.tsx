@@ -32,7 +32,7 @@ export default function PageLoader() {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }} 
           transition={{ duration: 0.6, ease: 'easeInOut' }}
-          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#ECEAE5]"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-cream-100"
         >
           {/* Logo wordmark */}
           <motion.div
@@ -42,16 +42,16 @@ export default function PageLoader() {
             className="flex flex-col items-center"
           >
             <span className="font-sans text-[13px] font-semibold tracking-[0.25em] text-stone-900 uppercase">
-              DARCHIA <span className="text-stone-400">&amp;</span> PARTNERS
+              BALANCE<span className="text-gold-500">101</span>
             </span>
             <span className="text-[7px] font-medium tracking-[0.45em] text-stone-400 mt-1.5 uppercase">
-              Attorneys at Law
+              საბუღალტრო კომპანია
             </span>
           </motion.div>
 
           {/* Progress line — grows left → right */}
           <motion.div
-            className="mt-7 h-px bg-stone-400 w-14"
+            className="mt-7 h-px bg-gold-500 w-14"
             style={{ transformOrigin: 'left center' }}
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}

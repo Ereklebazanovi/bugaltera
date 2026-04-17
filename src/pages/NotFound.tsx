@@ -12,7 +12,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[72vh] flex flex-col items-center justify-center px-4 py-24 bg-stone-50">
       <SEO
-        title="404 — გვერდი ვერ მოიძებნა | Darchia & Partners"
+        title="404 — გვერდი ვერ მოიძებნა | Balance101"
         description="გვერდი, რომელსაც ეძებთ, არ არსებობს. დაბრუნდით მთავარ გვერდზე."
         noindex
       />
