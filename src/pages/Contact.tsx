@@ -275,7 +275,7 @@ async function handleConfirm() {
   return (
     <div className="bg-white min-h-screen">
       <SEO
-        title="დაგვიკავშირდით — Balance101 • ბალანსი 101"
+        title="დაგვიკავშირდით - Balance101 • ბალანსი 101"
         description="დაუკავშირდით Balance101-ის გუნდს. მიიღეთ პროფესიონალური საბუღალტრო და ფინანსური კონსულტაცია თბილისში."
         keywords="contact accountant tbilisi, accounting consultation georgia, bookkeeping services tbilisi, balance101 contact, financial services phone tbilisi"
         path="/contact"
