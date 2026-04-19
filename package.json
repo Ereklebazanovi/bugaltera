@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
+    "archyedt-thin": "^1.0.1",
     "browser-image-compression": "^2.0.2",
     "firebase": "^12.10.0",
     "framer-motion": "^12.35.2",

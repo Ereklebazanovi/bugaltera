@@ -238,7 +238,7 @@ async function handleConfirm() {
         read: false,
       })
 
-      // 2. ვამზადებთ ლამაზ HTML-ს ადმინისთვის
+      // 2. ვამზადებთ HTML ადმინებისთვის
       const adminHtml = `
         <div style="font-family: sans-serif; color: #1c1917; line-height: 1.6;">
           <h3 style="margin-bottom: 20px;">ახალი მოთხოვნა საიტიდან</h3>
@@ -249,47 +249,15 @@ async function handleConfirm() {
           ${form.message.trim() ? `<p><strong>შეტყობინება:</strong><br><span style="color: #57534e;">${form.message.trim()}</span></p>` : ''}
         </div>
       `;
-      // 3. ვამზადებთ ექსთენშენისთვის პირველ დავალებას (ადმინთან გაგზავნა)
-      const mailPromises: Promise<unknown>[] = [
-        addDoc(collection(db, 'mail'), {
-          to: 'Balance.101@Outlook.com', // ეს გადასაცვლელია იმ ადმინის მეილზე, ვინც უნდა მიიღოს შეტყობინება
 
-          message: {
-            subject: `ახალი შეტყობინება საიტიდან: ${form.name}`,
-            html: adminHtml,
-          },
-        }),
-      ]
-
-      // 4. თუ მომხმარებელმა მეილი ჩაწერა, ვამზადებთ მისთვისაც ლამაზ პასუხს
-      const userEmail = form.email.trim()
-      if (userEmail) {
-        const userHtml = `
-          <div style="font-family: sans-serif; color: #1c1917; line-height: 1.6;">
-            <p>მოგესალმებით <strong>${form.name}</strong>,</p>
-            <p>თქვენი შეტყობინება წარმატებით მივიღეთ. ჩვენი გუნდის წევრი გაეცნობა თქვენს საკითხს და უმოკლეს დროში დაგიკავშირდებათ მითითებულ ნომერზე ან ელ-ფოსტაზე.</p>
-            <br>
-            <p style="margin-bottom: 5px;">პატივისცემით,</p>
-            <p style="margin-top: 0;"><strong>Balance101</strong><br>
-            <span style="font-size: 12px; color: #78716c;">საბუღალტრო და ფინანსური მომსახურება</span></p>
-          </div>
-        `;
-
-
-mailPromises.push(
-          addDoc(collection(db, 'mail'), {
-            to: userEmail,
-            replyTo: 'Balance.101@Outlook.com', // ეს გადასაცვლელია იმ მეილზე, საიდანაც გინდა რომ პასუხი მოვიდეს (შეიძლება იგივე იყოს, რაც ადმინის მეილი) ანუ მათ რეალურ ბიუროს მეილი უნდა შევიყვანო რომ რეფლი პირდაპირ იქ წავიდეს
-            message: {
-              subject: 'Balance101 - შეტყობინება მიღებულია',
-              html: userHtml,
-            },
-          }),
-        )
-      }
-
-      // 5. ვუშვებთ ორივე მეილს ერთდროულად
-      await Promise.all(mailPromises)
+      // 3. ვაგზავნით შეტყობინებას ადმინებთან
+      await addDoc(collection(db, 'mail'), {
+        to: ['ebazanovi@gmail.com', 'bazanovierekle4@gmail.com'], // ადმინების იმეილები მერე უნდა შევცვალო ბალანსის ადმინების მეილები რაც იქნება იმაზე რომ მიუვიდეთ ფორმის შევსების ნოტიფიკაციები პირდაპირ მეილზე რომ შეამოწმონ ადმინ პანელი
+        message: {
+          subject: `ახალი შეტყობინება საიტიდან: ${form.name}`,
+          html: adminHtml,
+        },
+      })
 
       setConfirming(false)
       setSubmitted(true)
