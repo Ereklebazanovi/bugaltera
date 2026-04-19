@@ -23,7 +23,8 @@ export default function SEO({ title, description, keywords, image, path, canonic
     ? "Balance101 is a professional accounting and financial services firm in Tbilisi, Georgia, providing bookkeeping, tax consulting, audit, and financial advisory. Contact us for expert financial advice."
     : "ბალანსი 101 — პროფესიონალური საბუღალტრო და ფინანსური მომსახურება თბილისში. ბუღალტრული აღრიცხვა, საგადასახადო კონსულტაცია, აუდიტი და ფინანსური მრჩეველობა. დაგვიკავშირდით კვალიფიციური კონსულტაციისთვის.";
   const defaultKeywords = "accounting georgia, bookkeeping tbilisi, tax consulting georgia, audit tbilisi, financial services georgia, balance101, ბალანსი 101";
-  const defaultImage = "https://www.balance101.ge/og-default.jpg";
+  const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '') ?? 'https://www.balance101.ge';
+  const defaultImage = `${siteUrl}/og-default.jpg`;
   const defaultPath = "/";
 
   const fullTitle = title ? `${title}` : defaultTitle;
@@ -44,6 +45,9 @@ export default function SEO({ title, description, keywords, image, path, canonic
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="fb:app_id" content="" />
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={`https://www.balance101.ge${fullPath}`} />
