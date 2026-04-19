@@ -503,11 +503,11 @@ export default function AdminTeam() {
                     <>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">სახელი და გვარი <span className="text-red-400">*</span></label>
-                        <input type="text" value={nameKa} onChange={(e) => setNameKa(e.target.value)} placeholder="მაგ: გიორგი დარჩია" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        <input type="text" value={nameKa} onChange={(e) => setNameKa(e.target.value)} placeholder="მაგ: თამარ გიორგაძე" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">პოზიცია <span className="text-red-400">*</span></label>
-                        <input type="text" value={roleKa} onChange={(e) => setRoleKa(e.target.value)} placeholder="მაგ: მმართველი პარტნიორი" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        <input type="text" value={roleKa} onChange={(e) => setRoleKa(e.target.value)} placeholder="მაგ: მთავარი ბუღალტერი" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">მოკლე ბიოგრაფია <span className="text-red-400">*</span></label>
@@ -515,7 +515,7 @@ export default function AdminTeam() {
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">სპეციალიზაციები<span className="text-slate-400 font-normal ml-1">(მძიმით გამოყოფილი)</span></label>
-                        <input type="text" value={specializationsKaStr} onChange={(e) => setSpecializationsKaStr(e.target.value)} placeholder="სამოქალაქო სამართალი, კორპორაციული სამართალი" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        <input type="text" value={specializationsKaStr} onChange={(e) => setSpecializationsKaStr(e.target.value)} placeholder="საგადასახადო საქმე, ფინანსური რეპორტინგი" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
                         {specializationsKaStr.trim() && (
                           <div className="flex flex-wrap gap-1.5 mt-2">
                             {specializationsKaStr.split(",").map((s: string) => s.trim()).filter(Boolean).map((s: string) => (
@@ -529,11 +529,11 @@ export default function AdminTeam() {
                     <>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Full Name <span className="text-slate-400 font-normal ml-1">(optional)</span></label>
-                        <input type="text" value={nameEn} onChange={(e) => setNameEn(e.target.value)} placeholder="e.g. Giorgi Darchia" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        <input type="text" value={nameEn} onChange={(e) => setNameEn(e.target.value)} placeholder="e.g. Tamar Giorgadze" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Role <span className="text-slate-400 font-normal ml-1">(optional)</span></label>
-                        <input type="text" value={roleEn} onChange={(e) => setRoleEn(e.target.value)} placeholder="e.g. Managing Partner" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        <input type="text" value={roleEn} onChange={(e) => setRoleEn(e.target.value)} placeholder="e.g. Chief Accountant" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Bio <span className="text-slate-400 font-normal ml-1">(optional)</span></label>
@@ -541,7 +541,7 @@ export default function AdminTeam() {
                       </div>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Specializations<span className="text-slate-400 font-normal ml-1">(comma-separated, optional)</span></label>
-                        <input type="text" value={specializationsEnStr} onChange={(e) => setSpecializationsEnStr(e.target.value)} placeholder="Corporate Law, Civil Litigation" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        <input type="text" value={specializationsEnStr} onChange={(e) => setSpecializationsEnStr(e.target.value)} placeholder="Tax Audit, Financial Reporting" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
                         {specializationsEnStr.trim() && (
                           <div className="flex flex-wrap gap-1.5 mt-2">
                             {specializationsEnStr.split(",").map((s: string) => s.trim()).filter(Boolean).map((s: string) => (
@@ -557,14 +557,14 @@ export default function AdminTeam() {
                   <div>
                     <label className="block text-xs font-medium text-slate-600 mb-1.5">
                       URL Slug
-                      <span className="text-slate-400 font-normal ml-1">(არასავალდებულო — e.g. giorgi-darchia)</span>
+                      <span className="text-slate-400 font-normal ml-1">(არასავალდებულო — e.g. tamar-giorgadze)</span>
                     </label>
                     <div className="flex gap-2">
                       <input
                         type="text"
                         value={slug}
                         onChange={(e) => setSlug(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, ""))}
-                        placeholder="giorgi-darchia"
+                        placeholder="tamar-giorgadze"
                         className="flex-1 border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm font-mono text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition"
                       />
                       <button
