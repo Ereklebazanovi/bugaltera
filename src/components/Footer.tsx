@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import logoBalance from '../assets/logoBalance.png'
 
 export default function Footer() {
   const { t } = useTranslation()
@@ -18,13 +19,8 @@ export default function Footer() {
 
         {/* Col 1 — Brand */}
         <div className="sm:col-span-2 lg:col-span-1">
-          <Link to="/" className="inline-flex flex-col leading-none no-underline mb-5 group">
-            <span className="font-serif text-[17px] tracking-wide text-white uppercase group-hover:text-gold-400 transition-colors duration-200">
-              BALANCE<span className="text-gold-500">101</span>
-            </span>
-            <span className="text-[9px] font-normal tracking-[0.22em] text-white/40 mt-1 uppercase">
-              {t('layout.header.subtitle')}
-            </span>
+          <Link to="/" className="inline-flex no-underline mb-5 hover:opacity-80 transition-opacity duration-200">
+            <img src={logoBalance} alt="Balance101" className="h-16 w-auto object-contain brightness-0 invert" />
           </Link>
           <p className="text-[13px] text-white/50 leading-relaxed max-w-88">
             {t('layout.footer.tagline')}

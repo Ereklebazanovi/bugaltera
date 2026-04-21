@@ -1,8 +1,7 @@
-// Partners.tsx
+// Partners.tsx — refactored to "Clients We Serve" logo grid
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { X } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 import { db } from '../lib/firebase'
@@ -16,9 +15,6 @@ interface Partner {
   id: string
   name_ka: string
   name_en?: string
-  description_ka?: string
-  description_en?: string
-  websiteUrl?: string
   logoUrl: string
   createdAt: { toDate: () => Date } | null
 }
@@ -26,30 +22,25 @@ interface Partner {
 // ── Animation variants ────────────────────────────────────────────────────────
 
 const gridStagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.05 } },
+  hidden:  {},
+  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.05 } },
 }
 
-const cardVariant = {
-  hidden:  { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const } },
+const logoVariant = {
+  hidden:  { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const } },
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Partners() {
   const { t, i18n } = useTranslation()
-  const scrollPosRef = useRef(0); 
 
-  // Pick the correct language field; fall back to Georgian if English is empty.
   const getName = (p: Partner) =>
     i18n.language === 'en' ? (p.name_en || p.name_ka) : p.name_ka
-  const getDesc = (p: Partner) =>
-    i18n.language === 'en' ? (p.description_en || p.description_ka) : p.description_ka
 
   const [partners, setPartners] = useState<Partner[]>([])
   const [loading, setLoading] = useState(true)
-  const [selected, setSelected] = useState<Partner | null>(null)
 
   useEffect(() => {
     const fetchPartners = async () => {
@@ -67,55 +58,25 @@ export default function Partners() {
     fetchPartners()
   }, [])
 
-  // Lock body scroll while modal is open
-  useEffect(() => {
-    if (selected) {
-      scrollPosRef.current = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollPosRef.current}px`;
-      document.body.style.width = '100%';
-    } else {
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      document.documentElement.style.scrollBehavior = 'auto';
-      window.scrollTo(0, scrollPosRef.current);
-      requestAnimationFrame(() => {
-        document.documentElement.style.scrollBehavior = '';
-      });
-    }
-  }, [selected]);
-
-  // Escape key
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null) }
-    document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
-  }, [])
-
   return (
     <>
       <SEO
-        title="პარტნიორები — Balance101 • ბალანსი 101"
-        description={"გაიცანით Balance101-ის სანდო პარტნიორები — წამყვანი ორგანიზაციები და კორპორატიული ფინანსური პარტნიორობა საქართველოს წამყვან ბანკებთან და ბიზნეს-სტრუქტურებთან."}
-        keywords="balance101 partners, accounting firm partners georgia, corporate financial partners, TBC bank accounting, AmCham Georgia, ფინანსური პარტნიორობა, კორპორატიული მომსახურება"
+        title="კლიენტები — Balance101 • ბალანსი 101"
+        description="გაიცანით კომპანიები, რომლებსაც Balance101 ემსახურება — საქართველოს წამყვანი ბიზნეს-სტრუქტურები და ორგანიზაციები."
+        keywords="balance101 clients, accounting firm clients georgia, კლიენტები, მომსახურე კომპანიები, ბუღალტრული მომსახურება"
         path="/partners"
       />
-      {/* ── Dark full-image hero — left-aligned ───────────────────────────── */}
+
+      {/* ── Hero ──────────────────────────────────────────────────────────────── */}
       <section className="bg-stone-900 overflow-hidden">
         <div className="relative min-h-[55vh] md:min-h-[78vh] flex items-center">
-
-          {/* Background image */}
           <img
             src={heroImage}
             alt={t('partnersPage.hero.imgAlt')}
             className="absolute inset-0 w-full h-full object-cover object-[50%_30%]"
             loading="eager"
-            fetchPriority="high"
             decoding="async"
           />
-
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/50 to-black/30" />
 
           <motion.div
@@ -171,13 +132,34 @@ export default function Partners() {
         </div>
       </section>
 
-      {/* ── Partner cards grid ────────────────────────────────────────────── */}
-      <section className="py-10 md:py-24 px-4 md:px-8 bg-stone-50">
+      {/* ── Clients logo grid ──────────────────────────────────────────────────── */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-stone-50">
         <div className="max-w-6xl mx-auto">
+
+          {/* Section heading */}
+          <motion.div
+            key={i18n.language}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-12 md:mb-16"
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <span className="block w-5 h-px bg-stone-400 shrink-0" />
+              <span className="text-stone-500 text-[10px] tracking-[0.35em] uppercase font-medium">
+                {i18n.language === 'en' ? 'Our Clients' : 'ჩვენი კლიენტები3'}
+              </span>
+            </div>
+            <h2 className="font-serif text-2xl md:text-3xl text-stone-900 font-normal">
+              {i18n.language === 'en' ? 'Trusted By' : 'ჩვენ გვენდობიან'}
+            </h2>
+          </motion.div>
+
+          {/* Grid */}
           {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-              {[1, 2, 3].map((n) => (
-                <div key={n} className="bg-white rounded-2xl h-72 animate-pulse shadow-sm" />
+            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
+              {Array.from({ length: 12 }).map((_, n) => (
+                <div key={n} className="bg-white rounded-xl aspect-3/2 animate-pulse border border-stone-100" />
               ))}
             </div>
           ) : partners.length === 0 ? null : (
@@ -186,120 +168,31 @@ export default function Partners() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10"
+              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4"
             >
               {partners.map((partner) => (
                 <motion.div
                   key={partner.id}
-                  variants={cardVariant}
-                  onClick={() => setSelected(partner)}
-                  className="group bg-white rounded-2xl border border-stone-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)]
-                             flex flex-col text-left p-8 md:p-10 lg:p-12 min-h-[260px] md:min-h-[320px]
-                             cursor-pointer hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1
-                             transition-all duration-400"
+                  variants={logoVariant}
+                  className="group bg-white rounded-xl border border-stone-100 shadow-sm
+                             flex items-center justify-center p-4 md:p-5 aspect-3/2
+                             hover:shadow-md hover:border-stone-200 transition-all duration-300"
                 >
-                  {/* Logo */}
                   <img
                     src={partner.logoUrl}
                     alt={getName(partner)}
                     loading="lazy"
                     decoding="async"
-                    className="h-14 md:h-20 w-auto object-contain object-left mb-auto"
+                    className="max-h-9 md:max-h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   />
-
-                  <div>
-                    {/* Name */}
-                    <h3 className="font-serif text-xl md:text-2xl text-navy-900 font-normal leading-snug mt-8">
-                      {getName(partner)}
-                    </h3>
-
-                    {/* Description excerpt */}
-                    {getDesc(partner) && (
-                      <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-4 line-clamp-3">
-                        {getDesc(partner)}
-                      </p>
-                    )}
-
-                    {/* Action indicator */}
-                    <span className="mt-8 text-[11px] md:text-xs uppercase tracking-widest text-gold-500 font-semibold block transition-colors group-hover:text-gold-600">
-                      {t('partnersPage.viewMore')}
-                    </span>
-                  </div>
                 </motion.div>
               ))}
             </motion.div>
           )}
+
         </div>
       </section>
 
-      {/* ── Partner detail modal ──────────────────────────────────────────── */}
-      <AnimatePresence>
-        {selected && (
-          <motion.div
-            className="fixed inset-0 z-60 flex items-center justify-center p-4 md:p-8 bg-stone-900/60 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={() => setSelected(null)}
-          >
-            <motion.div
-              className="relative bg-white rounded-3xl w-full max-w-lg shadow-2xl flex flex-col max-h-[90vh]"
-              initial={{ opacity: 0, scale: 0.96, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 16 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close */}
-              <button
-                onClick={() => setSelected(null)}
-                className="absolute top-5 right-5 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-stone-100 shadow-sm hover:bg-stone-200 text-stone-600 transition-colors duration-150 cursor-pointer"
-                aria-label="დახურვა"
-              >
-                <X size={16} strokeWidth={2.5} />
-              </button>
-
-              <div className="overflow-y-auto overscroll-contain p-8 md:p-12 flex flex-col items-center text-center">
-                {/* Logo */}
-                <div className="w-full h-32 md:h-40 flex items-center justify-center mb-6">
-                  <img
-                    src={selected.logoUrl}
-                    alt={getName(selected)}
-                    className="max-w-full h-24 md:h-32 object-contain"
-                  />
-                </div>
-
-                {/* Name */}
-                <h2 className="font-serif text-2xl md:text-3xl text-stone-900 font-normal leading-tight mb-5 pb-5 border-b border-stone-100 w-full">
-                  {getName(selected)}
-                </h2>
-
-                {/* Description */}
-                {getDesc(selected) && (
-                  <p className="text-stone-600 text-base font-light leading-relaxed mb-6 whitespace-pre-wrap text-left w-full">
-                    {getDesc(selected)}
-                  </p>
-                )}
-
-                {/* Website link */}
-                {selected.websiteUrl && (
-                  <a
-                    href={selected.websiteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="self-start inline-flex items-center gap-2 px-5 py-2.5 bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-medium rounded-lg transition-colors"
-                  >
-                    ვებსაიტზე გადასვლა
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ── Global CTA Banner ─────────────────────────────────────────────── */}
       <ConsultationBanner />
     </>
   )

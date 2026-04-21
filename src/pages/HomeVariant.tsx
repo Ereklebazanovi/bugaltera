@@ -1,5 +1,6 @@
 import HeroVariant from '../components/HeroVariant'
 import BentoGrid from '../components/BentoGrid'
+import ConsultationBanner from '../components/ConsultationBanner'
 import SEO from '../components/SEO'
 
 export default function HomeVariant() {
@@ -13,6 +14,7 @@ export default function HomeVariant() {
       />
       <HeroVariant />
       <BentoGrid />
+      <ConsultationBanner />
     </>
   )
 }
