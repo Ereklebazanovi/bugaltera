@@ -31,7 +31,7 @@ export default function HeroVariant() {
         <img
           src={heroImage}
           alt={t('home.hero.imgAlt')}
-          className="absolute inset-0 w-full h-full object-cover object-[50%_40%]"
+          className="absolute inset-0 w-full h-full object-cover object-[30%_40%] md:object-[50%_40%]"
           loading="eager"
           fetchPriority="high"
           decoding="async"
