@@ -120,7 +120,7 @@ export default function Header() {
               href="https://wa.me/995511411604"
               target="_blank"
               rel="noopener noreferrer"
-              className="lg:hidden flex items-center justify-center w-8 h-8 border border-stone-300 rounded-full text-stone-700 hover:border-[#25D366] hover:text-[#25D366] transition-all duration-200"
+              className="lg:hidden flex items-center justify-center w-8 h-8 border border-[#25D366] rounded-full text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all duration-200"
               aria-label="WhatsApp"
             >
               <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">

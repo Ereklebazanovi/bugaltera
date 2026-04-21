@@ -77,7 +77,7 @@ export default function Team() {
       <SEO
         title={"გუნდი — Balance101 • ბალანსი 101"}
         description={"გაიცანით Balance101-ის გამოცდილი ბუღალტრები და ფინანსური კონსულტანტები. პროფესიონალი სპეციალისტები თბილისში, ბიზნესის ფინანსური სტაბილურობისთვის."}
-        keywords={"ბუღალტრები თბილისში, ფინანსური კონსულტანტები, საბუღალტრო გუნდი, accountants tbilisi, financial consultants georgia, balance101 team, accounting specialists tbilisi"}
+        keywords={"ბუღალტრები თბილისში, ფინანსური კონსულტანტები, ბუღალტერიის გუნდი, accountants tbilisi, financial consultants georgia, balance101 team, accounting specialists tbilisi"}
         path="/team"
       />
 
