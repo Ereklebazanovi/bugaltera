@@ -1,15 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import logoBalance from '../assets/logoBalance.png'
 
 export default function PageLoader() {
   const { pathname } = useLocation()
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
+  const isFirstRender = useRef(true)
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
     setVisible(true)
-    const tid = setTimeout(() => setVisible(false), 700)
+    const tid = setTimeout(() => setVisible(false), 400)
     return () => clearTimeout(tid)
   }, [pathname])
 
@@ -19,37 +24,17 @@ export default function PageLoader() {
         <motion.div
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-navy-900"
+          transition={{ duration: 0.2, ease: 'easeInOut' }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-white"
         >
-          {/* Logo */}
-          <img
+          <motion.img
             src={logoBalance}
-            alt="Balance101"
-            className="h-20 w-auto object-contain brightness-0 invert"
+            alt="Balance 101"
+            className="w-36 select-none pointer-events-none"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
           />
-
-          {/* Pulse dots */}
-          <motion.div
-            className="flex items-center gap-1.5 mt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            {[0, 1, 2].map((i) => (
-              <motion.span
-                key={i}
-                className="w-1 h-1 rounded-full bg-gold-500"
-                animate={{ opacity: [0.3, 1, 0.3] }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  delay: i * 0.18,
-                  ease: 'easeInOut',
-                }}
-              />
-            ))}
-          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

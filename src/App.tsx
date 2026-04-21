@@ -26,10 +26,13 @@ import ProtectedRoute from './components/admin/ProtectedRoute'
 import { AuthProvider } from './context/AuthContext'
 import ScrollToTop from './components/ScrollToTop'
 import PageLoader from './components/PageLoader'
+import Preloader from './components/Preloader'
 
 export default function App() {
   return (
     <AuthProvider>
+    <>
+    <Preloader />
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
@@ -60,6 +63,7 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </>
     </AuthProvider>
   )
 }
