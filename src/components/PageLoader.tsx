@@ -13,9 +13,16 @@ export default function PageLoader() {
       isFirstRender.current = false
       return
     }
-    setVisible(true)
-    const tid = setTimeout(() => setVisible(false), 400)
-    return () => clearTimeout(tid)
+    let closeTid: number | undefined
+    const openTid = window.setTimeout(() => {
+      setVisible(true)
+      closeTid = window.setTimeout(() => setVisible(false), 400)
+    }, 0)
+
+    return () => {
+      window.clearTimeout(openTid)
+      if (closeTid) window.clearTimeout(closeTid)
+    }
   }, [pathname])
 
   return (

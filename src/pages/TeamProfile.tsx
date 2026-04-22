@@ -161,7 +161,7 @@ export default function TeamProfile() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease }}
         >
-          <div className="w-8 h-[2px] bg-[#C9A84C] mb-5" />
+          <div className="w-8 h-[2px] bg-gold-500 mb-5" />
           <motion.p
             key={`role-mob-${lang}`}
             initial={{ opacity: 0 }}
@@ -234,7 +234,7 @@ export default function TeamProfile() {
 
               {/* Gold bar + Role + Name — desktop only */}
               <div className="hidden md:block">
-                <div className="w-8 h-[2px] bg-[#C9A84C] mb-6" />
+                <div className="w-8 h-[2px] bg-gold-500 mb-6" />
                 <motion.p
                   key={`role-desk-${lang}`}
                   initial={{ opacity: 0 }}

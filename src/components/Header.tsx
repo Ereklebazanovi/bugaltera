@@ -38,8 +38,10 @@ export default function Header() {
 
   // Close menu on route change
   useEffect(() => {
-    setMobileMenuOpen(false)
-  }, [location.pathname])
+    if (!mobileMenuOpen) return
+    const tid = window.setTimeout(() => setMobileMenuOpen(false), 0)
+    return () => window.clearTimeout(tid)
+  }, [location.pathname, mobileMenuOpen])
 
   return (
     <>
@@ -143,7 +145,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <Link
               to="/contact"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-stone-900 text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-stone-700 transition-all duration-300 no-underline rounded-sm shrink-0 shadow-sm"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gold-500 text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-gold-400 transition-all duration-300 no-underline rounded-sm shrink-0 shadow-sm"
             >
               {t('nav.cta')}
             </Link>

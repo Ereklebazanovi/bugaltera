@@ -12,7 +12,7 @@ export default function Footer() {
   const phones    = t('layout.footer.phones',      { returnObjects: true }) as Array<{ display: string; href: string }>
 
   return (
-    <footer className="bg-navy-900 border-t-2 border-t-gold-500">
+    <footer className="bg-gold-700 border-t-2 border-t-gold-500">
 
       {/* ── Main grid ─────────────────────────────────────────────────────── */}
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">

@@ -8,13 +8,13 @@ export default function ConsultationBanner() {
 
   return (
     <section className="py-12 px-4 md:px-8">
-      <div className="max-w-6xl mx-auto bg-navy-900 relative overflow-hidden rounded-sm">
+      <div className="max-w-6xl mx-auto bg-gold-500 relative overflow-hidden rounded-sm">
 
         {/* Top accent line */}
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-white/10" />
 
         {/* Subtle diagonal overlay */}
-        <div className="absolute inset-0 bg-linear-to-br from-navy-800/40 via-transparent to-navy-900 pointer-events-none" />
+        <div className="absolute inset-0 bg-linear-to-br from-gold-400/35 via-transparent to-gold-700 pointer-events-none" />
 
         <div className="relative px-8 py-16 md:px-16 flex flex-col items-center text-center gap-8">
 
@@ -49,7 +49,7 @@ export default function ConsultationBanner() {
           >
             <Link
               to="/contact"
-              className="group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white text-navy-900 text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors duration-300 no-underline rounded-sm"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white text-gold-700 text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors duration-300 no-underline rounded-sm"
             >
               {t('consultationBanner.cta')}
               <ArrowRight

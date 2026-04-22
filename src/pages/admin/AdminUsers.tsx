@@ -10,7 +10,7 @@ import {
 import { initializeApp, getApps } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { db, firebaseConfig } from "../../lib/firebase";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "../../context/authContext";
 import AdminLayout from "../../layouts/AdminLayout";
 import { UserPlus, Trash2, Shield, Loader2 } from "lucide-react";
 

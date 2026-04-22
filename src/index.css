@@ -14,10 +14,11 @@
   --color-cream-200: #D9EAEA;
   --color-cream-300: #C4DADA;
 
-  /* Accent - Dusty Rose (client brand color) */
-  --color-gold-400: #4a7c59;
-  --color-gold-500: #3d6b4a;
-  --color-gold-600: #2f5438;
+  /* Brand accent - Heliotrope (Pantone 19-3737 TCX) */
+  --color-gold-400: #6C4A9B;
+  --color-gold-500: #4F3872;
+  --color-gold-600: #3B2956;
+  --color-gold-700: #2C1F41;
 
   /* Text */
   --color-charcoal: #1C1C1C;
