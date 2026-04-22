@@ -38,10 +38,9 @@ export default function Header() {
 
   // Close menu on route change
   useEffect(() => {
-    if (!mobileMenuOpen) return
     const tid = window.setTimeout(() => setMobileMenuOpen(false), 0)
     return () => window.clearTimeout(tid)
-  }, [location.pathname, mobileMenuOpen])
+  }, [location.pathname])
 
   return (
     <>
