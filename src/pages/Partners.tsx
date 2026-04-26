@@ -19,7 +19,7 @@ interface Partner {
   createdAt: { toDate: () => Date } | null
 }
 
-// ── Animation variants ────────────────────────────────────────────────────────
+// ── Animation variants ────────────────────────────────────────────────────────////
 
 const gridStagger = {
   hidden:  {},
