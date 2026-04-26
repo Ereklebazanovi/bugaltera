@@ -14,11 +14,28 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
 }
 
+// ── CMS helper ───────────────────────────────────────────────────────────────
+
+function firestoreLang(i18nLang: string): string {
+  return i18nLang === 'ge' ? 'ka' : i18nLang
+}
+
 // ── Component ───────────────────────────────────────────────────────────────
 
-export default function BentoGrid() {
+interface Props {
+  cms?: Record<string, string> | null
+}
+
+export default function BentoGrid({ cms }: Props) {
   const { t, i18n } = useTranslation()
-  const languages = t('aboutPage.languages.list', { returnObjects: true }) as string[]
+  const lk = firestoreLang(i18n.language)
+  const c = (key: string, fallback: string) => cms?.[`${key}_${lk}`] || fallback
+
+  const languages = [
+    c('lang0', (t('aboutPage.languages.list', { returnObjects: true }) as string[])[0]),
+    c('lang1', (t('aboutPage.languages.list', { returnObjects: true }) as string[])[1]),
+    c('lang2', (t('aboutPage.languages.list', { returnObjects: true }) as string[])[2]),
+  ]
 
   return (
     <section id="services" className="bg-stone-200 pt-12 pb-8 md:py-12 px-4 md:px-8">
@@ -46,11 +63,11 @@ export default function BentoGrid() {
               <div className="flex items-center gap-3 mb-3">
                 <span className="block w-5 h-px bg-stone-300 shrink-0" />
                 <span className="text-stone-400 text-[10px] tracking-[0.35em] uppercase font-medium">
-                  {t('aboutPage.languages.eyebrow')}
+                  {c('langEyebrow', t('aboutPage.languages.eyebrow'))}
                 </span>
               </div>
               <h2 className="font-serif text-2xl text-stone-900 font-normal mb-6">
-                {t('aboutPage.languages.heading')}
+                {c('langHeading', t('aboutPage.languages.heading'))}
               </h2>
               <motion.div
                 key={i18n.language}
@@ -82,7 +99,7 @@ export default function BentoGrid() {
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-5 h-px bg-stone-300 shrink-0" />
               <span className="text-stone-400 text-[10px] tracking-[0.35em] uppercase font-medium">
-                {t('aboutPage.mission.eyebrow')}
+                {c('missionEyebrow', t('aboutPage.mission.eyebrow'))}
               </span>
             </div>
             <motion.p
@@ -92,7 +109,7 @@ export default function BentoGrid() {
               transition={{ duration: 0.5 }}
               className="font-serif text-xl text-stone-800 leading-relaxed font-normal"
             >
-              {t('aboutPage.mission.body')}
+              {c('missionBody', t('aboutPage.mission.body'))}
             </motion.p>
           </motion.div>
 

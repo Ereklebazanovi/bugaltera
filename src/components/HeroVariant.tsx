@@ -6,18 +6,32 @@ import { useTranslation } from 'react-i18next'
 import heroImage from '../assets/hero.webp'
 import CountUp from './CountUp'
 
-// ── Static data (non-translatable) ──────────────────────────────────────────
+// ── Static fallback stats (used when CMS has no override) ────────────────────
 
-const TRUST_STATS = [
+const FALLBACK_STATS = [
   { num: 10, suffix: '+' },
   { num: 50, suffix: '+' },
-  { num: 10,  suffix: '+' },
+  { num: 10, suffix: '+' },
 ]
+
+// ── CMS helpers ───────────────────────────────────────────────────────────────
+
+// i18n uses 'ge' for Georgian; Firestore keys use 'ka'
+function firestoreLang(i18nLang: string): string {
+  return i18nLang === 'ge' ? 'ka' : i18nLang
+}
 
 // ── Component ─────────────────────────────────────────────────────────────────
 
-export default function HeroVariant() {
+interface Props {
+  cms?: Record<string, string> | null
+}
+
+export default function HeroVariant({ cms }: Props) {
   const { t, i18n } = useTranslation()
+  // Returns CMS value if non-empty, otherwise falls back to the i18n translation
+  const lk = firestoreLang(i18n.language)
+  const c = (key: string, fallback: string) => cms?.[`${key}_${lk}`] || fallback
 
   return (
     <section className="bg-stone-900 overflow-hidden">
@@ -63,7 +77,7 @@ export default function HeroVariant() {
               transition={{ duration: 0.6, delay: 0.15 }}
             >
               <span className="w-5 h-px bg-gold-400 shrink-0" />
-              {t('home.hero.eyebrow')}
+              {c('eyebrow', t('home.hero.eyebrow'))}
               <span className="w-5 h-px bg-gold-400 shrink-0" />
             </motion.p>
 
@@ -87,7 +101,7 @@ export default function HeroVariant() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.38 }}
             >
-              {t('home.hero.tagline')}
+              {c('tagline', t('home.hero.tagline'))}
             </motion.p>
 
             <motion.div
@@ -105,7 +119,7 @@ export default function HeroVariant() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.55 }}
             >
-              {t('home.hero.heading1')} {t('home.hero.heading2')}
+              {c('heading1', t('home.hero.heading1'))} {c('heading2', t('home.hero.heading2'))}
             </motion.p>
 
             {/* 4b — Description */}
@@ -115,7 +129,7 @@ export default function HeroVariant() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.65 }}
             >
-              {t('home.hero.subCopy')}
+              {c('subCopy', t('home.hero.subCopy'))}
             </motion.p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 mt-2 md:mt-4">
@@ -123,14 +137,14 @@ export default function HeroVariant() {
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3 w-full sm:w-auto bg-stone-900 text-white text-sm font-medium tracking-wide hover:bg-stone-800 transition-all duration-300 no-underline rounded-sm"
               >
-                {t('home.hero.cta1')}
+                {c('cta1', t('home.hero.cta1'))}
                 <ArrowRight size={14} strokeWidth={1.5} />
               </Link>
               <Link
                 to="/services"
                 className="inline-flex items-center justify-center gap-1.5 px-8 py-3 w-full sm:w-auto border border-stone-300 text-stone-200 text-sm font-medium tracking-wide hover:bg-white/10 transition-all duration-300 no-underline"
               >
-                {t('home.hero.cta2')}
+                {c('cta2', t('home.hero.cta2'))}
                 <ChevronRight size={14} strokeWidth={1.5} />
               </Link>
             </div>
@@ -152,21 +166,27 @@ export default function HeroVariant() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           >
-            {TRUST_STATS.map(({ num, suffix }, i) => (
-              <Fragment key={num}>
+            {FALLBACK_STATS.map(({ num, suffix }, i) => {
+              const cmsNum    = cms?.[`stat${i}_num`]
+              const cmsSuffix = cms?.[`stat${i}_suffix`]
+              const resolvedNum    = cmsNum    ? parseInt(cmsNum, 10) : num
+              const resolvedSuffix = cmsSuffix ?? suffix
+              return (
+              <Fragment key={i}>
                 <div className="text-center min-w-0 flex-1 sm:flex-none px-1">
                   <p className="font-serif text-2xl md:text-4xl text-white font-normal leading-none tabular-nums drop-shadow-sm">
-                    <CountUp num={num} suffix={suffix} delay={800} />
+                    <CountUp num={resolvedNum} suffix={resolvedSuffix} delay={800} />
                   </p>
                   <p className="text-white/70 text-[7px] xs:text-[8px] md:text-[9px] mt-2 uppercase tracking-widest font-medium leading-[1.3] wrap-break-word">
-                    {t(`home.hero.stats.${i}`)}
+                    {c(`stat${i}`, t(`home.hero.stats.${i}`))}
                   </p>
                 </div>
-                {i < TRUST_STATS.length - 1 && (
+                {i < FALLBACK_STATS.length - 1 && (
                   <div className="w-px h-6 md:h-10 bg-white/20 shrink-0 mt-1" />
                 )}
               </Fragment>
-            ))}
+              )
+            })}
           </motion.div>
         </motion.div>
 

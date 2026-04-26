@@ -14,13 +14,17 @@ interface Member {
   id: string
   name_ka: string
   name_en?: string
+  name_ru?: string
   role_ka: string
   role_en?: string
+  role_ru?: string
   bio_ka: string
   bio_en?: string
+  bio_ru?: string
   linkedin?: string
   specializations_ka?: string[]
   specializations_en?: string[]
+  specializations_ru?: string[]
   slug?: string
   photoUrl: string
 }
@@ -48,12 +52,20 @@ export default function TeamProfile() {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
 
-  const getName  = (m: Member) => lang === 'en' ? (m.name_en || m.name_ka) : m.name_ka
-  const getRole  = (m: Member) => lang === 'en' ? (m.role_en || m.role_ka) : m.role_ka
-  const getBio   = (m: Member) => lang === 'en' ? (m.bio_en  || m.bio_ka)  : m.bio_ka
-  const getSpecs = (m: Member): string[] => (lang === 'en'
-    ? (m.specializations_en?.length ? m.specializations_en : m.specializations_ka)
-    : m.specializations_ka) ?? []
+  const getName  = (m: Member) =>
+    lang === 'ru' ? (m.name_ru || m.name_en || m.name_ka) :
+    lang === 'en' ? (m.name_en || m.name_ka) : m.name_ka
+  const getRole  = (m: Member) =>
+    lang === 'ru' ? (m.role_ru || m.role_en || m.role_ka) :
+    lang === 'en' ? (m.role_en || m.role_ka) : m.role_ka
+  const getBio   = (m: Member) =>
+    lang === 'ru' ? (m.bio_ru  || m.bio_en  || m.bio_ka) :
+    lang === 'en' ? (m.bio_en  || m.bio_ka) : m.bio_ka
+  const getSpecs = (m: Member): string[] => {
+    if (lang === 'ru') return (m.specializations_ru?.length ? m.specializations_ru : m.specializations_en?.length ? m.specializations_en : m.specializations_ka) ?? []
+    if (lang === 'en') return (m.specializations_en?.length ? m.specializations_en : m.specializations_ka) ?? []
+    return m.specializations_ka ?? []
+  }
 
   // Scroll to top whenever the profile slug changes
   useEffect(() => {
@@ -122,7 +134,7 @@ export default function TeamProfile() {
     return (
       <div className="bg-[#ECEAE5] min-h-screen flex flex-col items-center justify-center gap-5 px-6 text-center">
         <p className="font-serif text-2xl text-stone-500 font-normal">
-          {lang === 'en' ? 'Profile not found' : 'წევრი ვერ მოიძებნა'}
+          {lang === 'ru' ? 'Профиль не найден' : lang === 'en' ? 'Profile not found' : 'წევრი ვერ მოიძებნა'}
         </p>
         <Link
           to="/team"
@@ -138,9 +150,7 @@ export default function TeamProfile() {
   const name  = getName(member)
   const role  = getRole(member)
   const bio   = getBio(member)
-  const specs = (lang === 'en'
-    ? (member.specializations_en?.length ? member.specializations_en : member.specializations_ka)
-    : member.specializations_ka) ?? []
+  const specs = getSpecs(member)
 
   return (
     <>
@@ -262,7 +272,7 @@ export default function TeamProfile() {
               {specs.length > 0 && (
                 <div className="mb-9 md:mb-11">
                   <p className="text-xs tracking-[0.3em] uppercase font-semibold text-stone-500 mb-4">
-                    {lang === 'en' ? 'Areas of Practice' : 'სამართლის სფეროები'}
+                    {lang === 'ru' ? 'Специализации' : lang === 'en' ? 'Areas of Practice' : 'სამართლის სფეროები'}
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {specs.map((s: string) => (
@@ -280,7 +290,7 @@ export default function TeamProfile() {
               {/* Biography */}
               <div className="mb-12 md:mb-16">
                 <p className="text-xs tracking-[0.3em] uppercase font-semibold text-stone-500 mb-5">
-                  {lang === 'en' ? 'Biography' : 'ბიოგრაფია'}
+                  {lang === 'ru' ? 'Биография' : lang === 'en' ? 'Biography' : 'ბიოგრაფია'}
                 </p>
                 <p className="text-stone-700 text-[15px] md:text-base leading-[1.9] whitespace-pre-wrap break-words">
                   {bio}
@@ -302,7 +312,7 @@ export default function TeamProfile() {
                   className="hidden sm:inline-flex items-center justify-center gap-2 px-7 py-3.5 border border-stone-300 text-stone-600 text-[11px] font-medium tracking-[0.15em] uppercase hover:border-stone-500 hover:text-stone-900 transition-all duration-200 rounded-lg"
                 >
                   <ArrowLeft size={13} strokeWidth={1.75} />
-                  {lang === 'en' ? 'Back to Team' : 'გუნდი'}
+                  {lang === 'ru' ? 'Команда' : lang === 'en' ? 'Back to Team' : 'გუნდი'}
                 </Link>
               </div>
 
@@ -329,7 +339,7 @@ export default function TeamProfile() {
                 transition={{ duration: 0.4 }}
                 className="text-stone-500 text-[12px] tracking-[0.35em] uppercase font-medium"
               >
-                {lang === 'en' ? 'Other Experts' : 'გუნდის სხვა წევრები'}
+                {lang === 'ru' ? 'Другие специалисты' : lang === 'en' ? 'Other Experts' : 'გუნდის სხვა წევრები'}
               </motion.span>
             </div>
 

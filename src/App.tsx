@@ -22,6 +22,10 @@ import AdminPartners from './pages/admin/AdminPartners'
 import AdminMessages from './pages/admin/AdminMessages'
 import AdminUsers from './pages/admin/AdminUsers'
 import AdminPages from './pages/admin/AdminPages'
+import AdminHome from './pages/admin/AdminHome'
+import AdminServices from './pages/admin/AdminServices'
+import AdminAbout from './pages/admin/AdminAbout'
+import AdminBanner from './pages/admin/AdminBanner'
 import ProtectedRoute from './components/admin/ProtectedRoute'
 import { AuthProvider } from './context/AuthProvider'
 import ScrollToTop from './components/ScrollToTop'
@@ -45,7 +49,10 @@ export default function App() {
         <Route path="/admin/messages" element={<ProtectedRoute><AdminMessages /></ProtectedRoute>} />
         <Route path="/admin/users" element={<ProtectedRoute><AdminUsers /></ProtectedRoute>} />
         <Route path="/admin/pages" element={<ProtectedRoute><AdminPages /></ProtectedRoute>} />
-
+        <Route path="/admin/pages/home" element={<ProtectedRoute><AdminHome /></ProtectedRoute>} />
+        <Route path="/admin/pages/services" element={<ProtectedRoute><AdminServices /></ProtectedRoute>} />
+        <Route path="/admin/pages/about" element={<ProtectedRoute><AdminAbout /></ProtectedRoute>} />
+        <Route path="/admin/pages/banner" element={<ProtectedRoute><AdminBanner /></ProtectedRoute>} />
         {/* Public routes — wrapped in MainLayout */}
         <Route element={<><PageLoader /><MainLayout><Outlet /></MainLayout></>}>
           <Route path="/" element={<HomeVariant />} />

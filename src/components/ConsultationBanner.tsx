@@ -1,23 +1,48 @@
+// ConsultationBanner.tsx
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../lib/firebase'
+
+function firestoreLang(i18nLang: string): string {
+  return i18nLang === 'ge' ? 'ka' : i18nLang
+}
 
 export default function ConsultationBanner() {
   const { t, i18n } = useTranslation()
+  const [bannerData, setBannerData] = useState<Record<string, string> | null>(null)
+
+  useEffect(() => {
+    // ეკითხება ბაზას დამოუკიდებლად!
+    getDoc(doc(db, 'globals', 'banner'))
+      .then((snap) => {
+        if (snap.exists()) {
+          setBannerData(snap.data() as Record<string, string>)
+        }
+      })
+      .catch((err) => console.error("Banner CMS Fetch Error:", err))
+  }, [])
+
+  const lk = firestoreLang(i18n.language)
+  
+  // ჭკვიანი ფილტრი: ჯერ ბაზა, მერე JSON
+  const c = (key: string, fallback: string) => bannerData?.[`${key}_${lk}`] || fallback
+
+  // ნომრების წაკითხვა ბაზიდან (ან დეფოლტები თუ ბაზა ცარიელია)
+  const phone1 = bannerData?.phone1 || "+995 511 411 604";
+  const phone2 = bannerData?.phone2 || "032 219 08 39";
 
   return (
     <section className="py-12 px-4 md:px-8">
       <div className="max-w-6xl mx-auto bg-gold-500 relative overflow-hidden rounded-sm">
-
-        {/* Top accent line */}
+        
         <div className="absolute top-0 left-0 right-0 h-0.5 bg-white/10" />
-
-        {/* Subtle diagonal overlay */}
         <div className="absolute inset-0 bg-linear-to-br from-gold-400/35 via-transparent to-gold-700 pointer-events-none" />
 
         <div className="relative px-8 py-16 md:px-16 flex flex-col items-center text-center gap-8">
-
           <motion.div
             key={i18n.language}
             className="max-w-2xl"
@@ -32,10 +57,10 @@ export default function ConsultationBanner() {
               <span className="w-5 h-px bg-white/20 shrink-0" />
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-white font-normal mb-4 leading-tight tracking-tight">
-              {t('consultationBanner.heading')}
+              {c('heading', t('consultationBanner.heading'))}
             </h2>
             <p className="text-white/50 text-base font-light leading-relaxed">
-              {t('consultationBanner.subCopy')}
+              {c('subCopy', t('consultationBanner.subCopy'))}
             </p>
           </motion.div>
 
@@ -51,28 +76,31 @@ export default function ConsultationBanner() {
               to="/contact"
               className="group inline-flex items-center justify-center gap-3 px-8 py-3.5 bg-white text-gold-700 text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-white/90 transition-colors duration-300 no-underline rounded-sm"
             >
-              {t('consultationBanner.cta')}
+              {c('cta', t('consultationBanner.cta'))}
               <ArrowRight
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
                 strokeWidth={1.5}
               />
             </Link>
+            
+            {/* დინამიური ნომერი 1 */}
             <a
-              href="tel:+995511411604"
+              href={`tel:${phone1.replace(/\s/g, '')}`}
               className="inline-flex items-center gap-2 text-white/50 text-[12px] hover:text-gold-400 transition-colors duration-200 no-underline"
             >
               <Phone size={13} strokeWidth={1.5} />
-              +995 511 411 604
+              {phone1}
             </a>
+            
+            {/* დინამიური ნომერი 2 */}
             <a
-              href="tel:+995322190839"
+              href={`tel:${phone2.replace(/\s/g, '')}`}
               className="inline-flex items-center gap-2 text-white/50 text-[12px] hover:text-gold-400 transition-colors duration-200 no-underline"
             >
               <Phone size={13} strokeWidth={1.5} />
-              032 219 08 39
+              {phone2}
             </a>
           </motion.div>
-
         </div>
       </div>
     </section>

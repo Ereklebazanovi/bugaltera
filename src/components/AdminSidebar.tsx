@@ -1,3 +1,4 @@
+//AdminSidebar.tsx
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { signOut } from "firebase/auth";
@@ -13,14 +14,22 @@ import {
   ShieldCheck,
   X,
   LayoutTemplate,
+  Home,
+  Briefcase,
+  MessageSquare,
+  
 } from "lucide-react";
 
 const navItems = [
-  { icon: LayoutDashboard, label: "მთავარი",        path: "/admin/dashboard" },
+  { icon: LayoutDashboard, label: "აქტივობები",        path: "/admin/dashboard" },
   { icon: FileText,        label: "ბლოგი",           path: "/admin/blog" },
   { icon: Users,           label: "გუნდი",           path: "/admin/team" },
   { icon: Building2,       label: "პარტნიორები",     path: "/admin/partners" },
   { icon: Mail,            label: "შეტყობინებები",   path: "/admin/messages" },
+  { icon: Home,            label: "მთავარი გვერდი",  path: "/admin/pages/home" },
+  { icon: Briefcase,       label: "სერვისები",       path: "/admin/pages/services" },
+  { icon: LayoutTemplate, label: "ჩვენ შესახებ", path: "/admin/pages/about" },
+  { icon: MessageSquare,   label: "გლობალური ბანერი",    path: "/admin/pages/banner" }, 
   { icon: LayoutTemplate,  label: "გვერდები",        path: "/admin/pages" },
   { icon: ShieldCheck,     label: "ადმინები",        path: "/admin/users" },
 ];
