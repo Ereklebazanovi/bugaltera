@@ -15,8 +15,10 @@ interface Post {
   id: string
   title_ka: string
   title_en?: string
+  title_ru?: string
   excerpt_ka: string
   excerpt_en?: string
+  excerpt_ru?: string
   coverUrl: string
   slug: string
   createdAt: { toDate: () => Date } | null
@@ -25,11 +27,8 @@ interface Post {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function formatDate(date: Date, lang: string): string {
-  return date.toLocaleDateString(lang === 'ge' ? 'ka-GE' : 'en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  const locale = lang === 'ge' ? 'ka-GE' : lang === 'ru' ? 'ru-RU' : 'en-US'
+  return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
 // ── Animation variants ────────────────────────────────────────────────────────
@@ -70,8 +69,12 @@ function SkeletonCard() {
 export default function Blog() {
   const { t, i18n } = useTranslation()
   const lang = i18n.language
-const getTitle = (p: Post) => i18n.language === 'en' ? (p.title_en || p.title_ka) : p.title_ka;
-  const getExcerpt = (p: Post) => i18n.language === 'en' ? (p.excerpt_en || p.excerpt_ka) : p.excerpt_ka;
+  const getTitle = (p: Post) =>
+    i18n.language === 'ru' ? (p.title_ru || p.title_en || p.title_ka) :
+    i18n.language === 'en' ? (p.title_en || p.title_ka) : p.title_ka
+  const getExcerpt = (p: Post) =>
+    i18n.language === 'ru' ? (p.excerpt_ru || p.excerpt_en || p.excerpt_ka) :
+    i18n.language === 'en' ? (p.excerpt_en || p.excerpt_ka) : p.excerpt_ka
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)

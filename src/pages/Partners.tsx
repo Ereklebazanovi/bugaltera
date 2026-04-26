@@ -15,6 +15,11 @@ interface Partner {
   id: string
   name_ka: string
   name_en?: string
+  name_ru?: string
+  description_ka?: string
+  description_en?: string
+  description_ru?: string
+  websiteUrl?: string
   logoUrl: string
   createdAt: { toDate: () => Date } | null
 }
@@ -37,7 +42,12 @@ export default function Partners() {
   const { t, i18n } = useTranslation()
 
   const getName = (p: Partner) =>
+    i18n.language === 'ru' ? (p.name_ru || p.name_en || p.name_ka) :
     i18n.language === 'en' ? (p.name_en || p.name_ka) : p.name_ka
+
+  const getDescription = (p: Partner) =>
+    i18n.language === 'ru' ? (p.description_ru || p.description_en || p.description_ka || '') :
+    i18n.language === 'en' ? (p.description_en || p.description_ka || '') : (p.description_ka || '')
 
   const [partners, setPartners] = useState<Partner[]>([])
   const [loading, setLoading] = useState(true)
@@ -147,19 +157,19 @@ export default function Partners() {
             <div className="flex items-center gap-3 mb-3">
               <span className="block w-5 h-px bg-stone-400 shrink-0" />
               <span className="text-stone-500 text-[10px] tracking-[0.35em] uppercase font-medium">
-                {i18n.language === 'en' ? 'Our Clients' : 'ჩვენი კლიენტები3'}
+                {i18n.language === 'ru' ? 'Наши клиенты' : i18n.language === 'en' ? 'Our Clients' : 'ჩვენი კლიენტები'}
               </span>
             </div>
             <h2 className="font-serif text-2xl md:text-3xl text-stone-900 font-normal">
-              {i18n.language === 'en' ? 'Trusted By' : 'ჩვენ გვენდობიან'}
+              {i18n.language === 'ru' ? 'Нам доверяют' : i18n.language === 'en' ? 'Trusted By' : 'ჩვენ გვენდობიან'}
             </h2>
           </motion.div>
 
           {/* Grid */}
           {loading ? (
-            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-              {Array.from({ length: 12 }).map((_, n) => (
-                <div key={n} className="bg-white rounded-xl aspect-3/2 animate-pulse border border-stone-100" />
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+              {Array.from({ length: 8 }).map((_, n) => (
+                <div key={n} className="bg-white rounded-lg h-36 animate-pulse border border-stone-100" />
               ))}
             </div>
           ) : partners.length === 0 ? null : (
@@ -168,25 +178,60 @@ export default function Partners() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-60px' }}
-              className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4"
             >
-              {partners.map((partner) => (
-                <motion.div
-                  key={partner.id}
-                  variants={logoVariant}
-                  className="group bg-white rounded-xl border border-stone-100 shadow-sm
-                             flex items-center justify-center p-4 md:p-5 aspect-3/2
-                             hover:shadow-md hover:border-stone-200 transition-all duration-300"
-                >
-                  <img
-                    src={partner.logoUrl}
-                    alt={getName(partner)}
-                    loading="lazy"
-                    decoding="async"
-                    className="max-h-9 md:max-h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                </motion.div>
-              ))}
+              {partners.map((partner) => {
+                const name = getName(partner)
+                const description = getDescription(partner)
+                return (
+                  <motion.div
+                    key={partner.id}
+                    variants={logoVariant}
+                    className="group bg-white rounded-lg border border-stone-100 shadow-sm
+                               flex flex-col p-4
+                               hover:shadow-lg hover:border-stone-200 hover:scale-105 transition-all duration-300 origin-center"
+                  >
+                    {/* Logo */}
+                    <div className="flex items-center justify-center h-14 mb-3">
+                      <img
+                        src={partner.logoUrl}
+                        alt={name}
+                        title={name}
+                        loading="lazy"
+                        decoding="async"
+                        className="max-h-12 w-auto object-contain"
+                      />
+                    </div>
+
+                    {/* Name */}
+                    <p className="text-[12px] font-semibold text-stone-800 text-center leading-snug mb-1.5">
+                      {name}
+                    </p>
+
+                    {/* Description */}
+                    {description && (
+                      <p className="text-[11px] text-stone-500 text-center leading-relaxed line-clamp-2 flex-1">
+                        {description}
+                      </p>
+                    )}
+
+                    {/* Website */}
+                    {partner.websiteUrl && (
+                      <div className="mt-2.5 flex justify-center">
+                        <a
+                          href={partner.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[10px] text-[#c78f9b] hover:text-[#b07a86] tracking-wide no-underline transition-colors duration-200"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {partner.websiteUrl.replace(/^https?:\/\//, '')}
+                        </a>
+                      </div>
+                    )}
+                  </motion.div>
+                )
+              })}
             </motion.div>
           )}
 

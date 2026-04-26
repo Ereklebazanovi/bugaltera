@@ -32,10 +32,13 @@ interface Post {
   id: string;
   title_ka: string;
   title_en: string;
+  title_ru: string;
   excerpt_ka: string;
   excerpt_en: string;
+  excerpt_ru: string;
   content_ka: string;
   content_en: string;
+  content_ru: string;
   coverUrl: string;
   slug: string;
   createdAt: { toDate: () => Date } | null;
@@ -109,13 +112,16 @@ export default function BlogManagement() {
   const [editingPost, setEditingPost] = useState<Post | null>(null);
 
   // form fields
-  const [formLang, setFormLang] = useState<"ka" | "en">("ka");
+  const [formLang, setFormLang] = useState<"ka" | "en" | "ru">("ka");
   const [titleKa, setTitleKa] = useState("");
   const [titleEn, setTitleEn] = useState("");
+  const [titleRu, setTitleRu] = useState("");
   const [excerptKa, setExcerptKa] = useState("");
   const [excerptEn, setExcerptEn] = useState("");
+  const [excerptRu, setExcerptRu] = useState("");
   const [contentKa, setContentKa] = useState("");
   const [contentEn, setContentEn] = useState("");
+  const [contentRu, setContentRu] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -158,9 +164,9 @@ export default function BlogManagement() {
   };
 
   const resetForm = () => {
-    setTitleKa(""); setTitleEn("");
-    setExcerptKa(""); setExcerptEn("");
-    setContentKa(""); setContentEn("");
+    setTitleKa(""); setTitleEn(""); setTitleRu("");
+    setExcerptKa(""); setExcerptEn(""); setExcerptRu("");
+    setContentKa(""); setContentEn(""); setContentRu("");
     clearImage();
     setError(null);
     setEditingPost(null);
@@ -176,10 +182,13 @@ export default function BlogManagement() {
     setEditingPost(post);
     setTitleKa(post.title_ka ?? "");
     setTitleEn(post.title_en ?? "");
+    setTitleRu(post.title_ru ?? "");
     setExcerptKa(post.excerpt_ka ?? "");
     setExcerptEn(post.excerpt_en ?? "");
+    setExcerptRu(post.excerpt_ru ?? "");
     setContentKa(post.content_ka ?? "");
     setContentEn(post.content_en ?? "");
+    setContentRu(post.content_ru ?? "");
     setImagePreview(post.coverUrl);
     setImageFile(null);
     setError(null);
@@ -256,9 +265,9 @@ export default function BlogManagement() {
       }
 
       const payload = {
-        title_ka: titleKa, title_en: titleEn,
-        excerpt_ka: excerptKa, excerpt_en: excerptEn,
-        content_ka: contentKa, content_en: contentEn,
+        title_ka: titleKa, title_en: titleEn, title_ru: titleRu,
+        excerpt_ka: excerptKa, excerpt_en: excerptEn, excerpt_ru: excerptRu,
+        content_ka: contentKa, content_en: contentEn, content_ru: contentRu,
         coverUrl
       };
 
@@ -526,6 +535,7 @@ export default function BlogManagement() {
                     <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 w-fit">
                       <button type="button" onClick={() => setFormLang("ka")} className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${formLang === "ka" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}>ქართული</button>
                       <button type="button" onClick={() => setFormLang("en")} className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${formLang === "en" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}>English</button>
+                      <button type="button" onClick={() => setFormLang("ru")} className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${formLang === "ru" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}>Русский</button>
                     </div>
                   </div>
 
@@ -545,7 +555,7 @@ export default function BlogManagement() {
                         <textarea rows={8} value={contentKa} onChange={(e) => setContentKa(e.target.value)} placeholder="სტატიის სრული შინაარსი..." className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-none" />
                       </div>
                     </>
-                  ) : (
+                  ) : formLang === "en" ? (
                     <>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Title <span className="text-slate-400 font-normal ml-1">(optional)</span></label>
@@ -558,6 +568,21 @@ export default function BlogManagement() {
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Content <span className="text-slate-400 font-normal ml-1">(optional)</span></label>
                         <textarea rows={8} value={contentEn} onChange={(e) => setContentEn(e.target.value)} placeholder="Full article content..." className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-none" />
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Заголовок <span className="text-slate-400 font-normal ml-1">(необязательно)</span></label>
+                        <input type="text" value={titleRu} onChange={(e) => setTitleRu(e.target.value)} placeholder="Заголовок статьи" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Краткое описание <span className="text-slate-400 font-normal ml-1">(необязательно)</span></label>
+                        <input type="text" value={excerptRu} onChange={(e) => setExcerptRu(e.target.value)} placeholder="Краткое содержание..." className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Полный текст <span className="text-slate-400 font-normal ml-1">(необязательно)</span></label>
+                        <textarea rows={8} value={contentRu} onChange={(e) => setContentRu(e.target.value)} placeholder="Полный текст статьи..." className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-none" />
                       </div>
                     </>
                   )}

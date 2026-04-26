@@ -8,13 +8,15 @@ import { FileText, Loader2, Check, ExternalLink } from "lucide-react";
 // ── Types ─────────────────────────────────────────────────────────────────────
 
 type PageKey = "terms" | "privacy";
-type LangKey = "ka" | "en";
+type LangKey = "ka" | "en" | "ru";
 
 interface PageContent {
   title_ka: string;
   title_en: string;
+  title_ru: string;
   content_ka: string;
   content_en: string;
+  content_ru: string;
 }
 
 // ── Constants ─────────────────────────────────────────────────────────────────
@@ -35,8 +37,10 @@ const PAGE_LABELS: Record<PageKey, { ka: string; en: string; route: string }> = 
 const EMPTY: PageContent = {
   title_ka: "",
   title_en: "",
+  title_ru: "",
   content_ka: "",
   content_en: "",
+  content_ru: "",
 };
 
 // ── Component ─────────────────────────────────────────────────────────────────
@@ -180,7 +184,7 @@ export default function AdminPages() {
                         ენა / Language
                       </p>
                       <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 w-fit">
-                        {(["ka", "en"] as LangKey[]).map((lng) => (
+                        {(["ka", "en", "ru"] as LangKey[]).map((lng) => (
                           <button
                             key={lng}
                             type="button"
@@ -191,7 +195,7 @@ export default function AdminPages() {
                                 : "text-slate-500 hover:text-slate-700"
                             }`}
                           >
-                            {lng === "ka" ? "ქართული" : "English"}
+                            {lng === "ka" ? "ქართული" : lng === "en" ? "English" : "Русский"}
                           </button>
                         ))}
                       </div>
@@ -202,7 +206,7 @@ export default function AdminPages() {
                       <label className="block text-xs font-medium text-slate-600 mb-1.5">
                         სათაური{" "}
                         <span className="text-slate-400 font-normal">
-                          ({activeLang === "ka" ? "ქართული" : "English"})
+                          ({activeLang === "ka" ? "ქართული" : activeLang === "en" ? "English" : "Русский"})
                         </span>
                       </label>
                       <input
@@ -233,7 +237,7 @@ export default function AdminPages() {
                       <label className="block text-xs font-medium text-slate-600 mb-1.5">
                         შინაარსი{" "}
                         <span className="text-slate-400 font-normal">
-                          ({activeLang === "ka" ? "ქართული" : "English"}) —
+                          ({activeLang === "ka" ? "ქართული" : activeLang === "en" ? "English" : "Русский"}) —
                           ყოველი ახალი ხაზი გამოჩნდება ახალ აბზაცად
                         </span>
                       </label>
@@ -254,7 +258,9 @@ export default function AdminPages() {
                         placeholder={
                           activeLang === "ka"
                             ? `შეიყვანეთ ${PAGE_LABELS[page].ka}-ის სრული ტექსტი...\n\nEnter = ახალი აბზაცი.\nორი Enter = ცარიელი ხაზი სექციებს შორის.`
-                            : `Enter the full ${PAGE_LABELS[page].en} text here...\n\nPress Enter for a new paragraph.\nPress Enter twice to add a blank line between sections.`
+                            : activeLang === "en"
+                            ? `Enter the full ${PAGE_LABELS[page].en} text here...\n\nPress Enter for a new paragraph.\nPress Enter twice to add a blank line between sections.`
+                            : `Введите полный текст...\n\nEnter = новый абзац.\nДва Enter = пустая строка между разделами.`
                         }
                         className="w-full border border-slate-200 rounded-lg px-3.5 py-3 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-y font-mono leading-relaxed"
                       />

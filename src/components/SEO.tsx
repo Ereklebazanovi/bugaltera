@@ -18,10 +18,16 @@ export default function SEO({ title, description, keywords, image, path, canonic
   const { i18n } = useTranslation();
   const lang = i18n.language;
 
-  const defaultTitle = lang === "en" ? "Balance101 — Accounting & Financial Services in Tbilisi, Georgia" : "ბალანსი 101 — საბუღალტრო და ფინანსური მომსახურება თბილისში";
-  const defaultDescription = lang === "en"
-    ? "Balance101 is a professional accounting and financial services firm in Tbilisi, Georgia, providing bookkeeping, tax consulting, audit, and financial advisory. Contact us for expert financial advice."
-    : "ბალანსი 101 — პროფესიონალური საბუღალტრო და ფინანსური მომსახურება თბილისში. ბუღალტრული აღრიცხვა, საგადასახადო კონსულტაცია, აუდიტი და ფინანსური მრჩეველობა. დაგვიკავშირდით კვალიფიციური კონსულტაციისთვის.";
+  const defaultTitle =
+    lang === "en" ? "Balance101 — Accounting & Financial Services in Tbilisi, Georgia" :
+    lang === "ru" ? "Баланс 101 — Бухгалтерские и финансовые услуги в Тбилиси, Грузия" :
+    "ბალანსი 101 — საბუღალტრო და ფინანსური მომსახურება თბილისში";
+  const defaultDescription =
+    lang === "en"
+      ? "Balance101 is a professional accounting and financial services firm in Tbilisi, Georgia, providing bookkeeping, tax consulting, audit, and financial advisory. Contact us for expert financial advice."
+      : lang === "ru"
+      ? "Баланс 101 — профессиональная компания бухгалтерских и финансовых услуг в Тбилиси, Грузия. Комплексная бухгалтерия, налоговые консультации, аудит и финансовые консультации. Свяжитесь с нами для получения экспертной помощи."
+      : "ბალანსი 101 — პროფესიონალური საბუღალტრო და ფინანსური მომსახურება თბილისში. ბუღალტრული აღრიცხვა, საგადასახადო კონსულტაცია, აუდიტი და ფინანსური მრჩეველობა. დაგვიკავშირდით კვალიფიციური კონსულტაციისთვის.";
   const defaultKeywords = "accounting georgia, bookkeeping tbilisi, tax consulting georgia, audit tbilisi, financial services georgia, balance101, ბალანსი 101";
   const siteUrl = (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '') ?? 'https://www.balance101.ge';
   const defaultImage = `${siteUrl}/og-default.jpg`;

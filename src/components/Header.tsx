@@ -55,7 +55,7 @@ export default function Header() {
 
           {/* Left: Logo */}
           <Link to="/" className="flex items-center no-underline shrink-0 hover:opacity-80 transition-opacity duration-200">
-            <img src={logoBalance} alt="Balance101" className="h-24 md:h-24 w-auto object-contain lg:mt-3 md:mt-2 sm:mt-3" />
+            <img src={logoBalance} alt="Balance101" className="h-32 md:h-32 w-auto object-contain mt-2 sm:mt-2 lg:mt-3 -ml-4 lg:ml-0" />
           </Link>
 
           {/* Center: Nav links — absolutely centered, desktop only */}
@@ -65,7 +65,7 @@ export default function Header() {
                 <Link
                   to={to}
                   className={`group relative text-[12px] md:text-[13px] font-medium tracking-wide transition-colors duration-300 no-underline py-2 ${
-                    isActive(to) ? 'text-gold-500' : 'text-stone-600 hover:text-stone-900'
+                    isActive(to) ? 'text-[#c78f9b]' : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   {t(key)}
@@ -75,7 +75,7 @@ export default function Header() {
                   {isActive(to) && (
                     <motion.span
                       layoutId="nav-active-pill"
-                      className="absolute -bottom-1.5 left-0 w-full h-px bg-gold-500"
+                      className="absolute -bottom-1.5 left-0 w-full h-px bg-[#c78f9b]"
                       transition={{ type: 'spring', stiffness: 400, damping: 35 }}
                     />
                   )}
@@ -89,7 +89,7 @@ export default function Header() {
 
             {/* Language switcher — all screens */}
             <div className="flex items-center gap-1 text-[10px] font-medium tracking-widest select-none">
-              {(['ge', 'en'] as const).map((lng, idx) => (
+              {(['ge', 'en', 'ru'] as const).map((lng, idx) => (
                 <Fragment key={lng}>
                   {idx > 0 && <span className="text-stone-300 mx-0.5">|</span>}
                   <button
@@ -97,7 +97,7 @@ export default function Header() {
                     onClick={() => i18n.changeLanguage(lng)}
                     className={`uppercase transition-colors duration-200 cursor-pointer bg-transparent border-none p-0 ${
                       i18n.language === lng
-                        ? 'text-gold-600 font-semibold'
+                        ? 'text-[#c78f9b] font-semibold'
                         : 'text-stone-400 hover:text-stone-600'
                     }`}
                   >
@@ -110,7 +110,7 @@ export default function Header() {
             {/* Mobile: phone */}
             <a
               href="tel:0322190839"
-              className="lg:hidden flex items-center justify-center w-8 h-8 border border-stone-300 rounded-full text-stone-700 hover:border-stone-500 hover:text-stone-900 transition-all duration-200"
+              className="lg:hidden flex items-center justify-center w-8 h-8 border border-[#c78f9b] rounded-full text-[#c78f9b] hover:border-[#b07a86] hover:text-[#b07a86] transition-all duration-200"
               aria-label={t('layout.header.callAriaLabel')}
             >
               <Phone size={14} strokeWidth={1.5} />
@@ -144,7 +144,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <Link
               to="/contact"
-              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-gold-500 text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-gold-400 transition-all duration-300 no-underline rounded-sm shrink-0 shadow-sm"
+              className="hidden lg:inline-flex items-center px-6 py-2.5 bg-[#c78f9b] text-white text-[11px] font-semibold tracking-[0.15em] uppercase hover:bg-[#b07a86] transition-all duration-300 no-underline rounded-sm shrink-0 shadow-sm"
             >
               {t('nav.cta')}
             </Link>
@@ -200,12 +200,12 @@ export default function Header() {
                     className="group flex items-baseline gap-5 py-5 no-underline transition-colors duration-300"
                   >
                     <span className={`text-[10px] font-sans w-5 shrink-0 tabular-nums transition-colors duration-300 ${
-                      isActive(to) ? 'text-gold-500/90' : 'text-gold-500/45'
+                      isActive(to) ? 'text-[#c78f9b]' : 'text-[#c78f9b]/45'
                     }`}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className={`text-3xl font-serif font-medium leading-none tracking-tight transition-colors duration-300 ${
-                      isActive(to) ? 'text-gold-400' : 'text-stone-100 group-hover:text-gold-400'
+                      isActive(to) ? 'text-[#c78f9b]' : 'text-stone-100 group-hover:text-[#c78f9b]'
                     }`}>
                       {t(key)}
                     </span>

@@ -4,6 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector'
 
 import geCommon from './locales/ge/common.json'
 import enCommon from './locales/en/common.json'
+import ruCommon from './locales/ru/common.json'
 
 i18n
   .use(LanguageDetector)
@@ -12,6 +13,7 @@ i18n
     resources: {
       ge: { common: geCommon },
       en: { common: enCommon },
+      ru: { common: ruCommon },
     },
     fallbackLng: 'ge',
     defaultNS: 'common',

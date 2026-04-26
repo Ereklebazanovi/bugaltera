@@ -35,15 +35,19 @@ interface Member {
   id: string;
   name_ka: string;
   name_en: string;
+  name_ru: string;
   role_ka: string;
   role_en: string;
+  role_ru: string;
   bio_ka: string;
   bio_en: string;
+  bio_ru: string;
   linkedin: string;
   photoUrl: string;
   slug?: string;
   specializations_ka?: string[];
   specializations_en?: string[];
+  specializations_ru?: string[];
   createdAt: { toDate: () => Date } | null;
 }
 // ── Crop helper ───────────────────────────────────────────────────────────────
@@ -99,17 +103,21 @@ export default function AdminTeam() {
   const [editingMember, setEditingMember] = useState<Member | null>(null);
 
   // form fields
-  const [formLang, setFormLang] = useState<"ka" | "en">("ka");
+  const [formLang, setFormLang] = useState<"ka" | "en" | "ru">("ka");
   const [nameKa, setNameKa] = useState("");
   const [nameEn, setNameEn] = useState("");
+  const [nameRu, setNameRu] = useState("");
   const [roleKa, setRoleKa] = useState("");
   const [roleEn, setRoleEn] = useState("");
+  const [roleRu, setRoleRu] = useState("");
   const [bioKa, setBioKa] = useState("");
   const [bioEn, setBioEn] = useState("");
+  const [bioRu, setBioRu] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [slug, setSlug] = useState("");
   const [specializationsKaStr, setSpecializationsKaStr] = useState("");
   const [specializationsEnStr, setSpecializationsEnStr] = useState("");
+  const [specializationsRuStr, setSpecializationsRuStr] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -150,12 +158,12 @@ export default function AdminTeam() {
   };
 
   const resetForm = () => {
-    setNameKa(""); setNameEn("");
-    setRoleKa(""); setRoleEn("");
-    setBioKa(""); setBioEn("");
+    setNameKa(""); setNameEn(""); setNameRu("");
+    setRoleKa(""); setRoleEn(""); setRoleRu("");
+    setBioKa(""); setBioEn(""); setBioRu("");
     setLinkedin("");
     setSlug("");
-    setSpecializationsKaStr(""); setSpecializationsEnStr("");
+    setSpecializationsKaStr(""); setSpecializationsEnStr(""); setSpecializationsRuStr("");
     clearImage();
     setError(null);
     setEditingMember(null);
@@ -168,14 +176,18 @@ export default function AdminTeam() {
     setEditingMember(member);
     setNameKa(member.name_ka ?? "");
     setNameEn(member.name_en ?? "");
+    setNameRu(member.name_ru ?? "");
     setRoleKa(member.role_ka ?? "");
     setRoleEn(member.role_en ?? "");
+    setRoleRu(member.role_ru ?? "");
     setBioKa(member.bio_ka ?? "");
     setBioEn(member.bio_en ?? "");
+    setBioRu(member.bio_ru ?? "");
     setLinkedin(member.linkedin ?? "");
     setSlug(member.slug ?? "");
     setSpecializationsKaStr((member.specializations_ka ?? []).join(", "));
     setSpecializationsEnStr((member.specializations_en ?? []).join(", "));
+    setSpecializationsRuStr((member.specializations_ru ?? []).join(", "));
     setImagePreview(member.photoUrl);
     setImageFile(null);
     setCropSrc(null);
@@ -247,13 +259,14 @@ export default function AdminTeam() {
       }
 
       const payload = {
-        name_ka: nameKa, name_en: nameEn,
-        role_ka: roleKa, role_en: roleEn,
-        bio_ka: bioKa, bio_en: bioEn,
+        name_ka: nameKa, name_en: nameEn, name_ru: nameRu,
+        role_ka: roleKa, role_en: roleEn, role_ru: roleRu,
+        bio_ka: bioKa, bio_en: bioEn, bio_ru: bioRu,
         linkedin, photoUrl,
         slug: slug.trim(),
         specializations_ka: specializationsKaStr.split(",").map((s: string) => s.trim()).filter(Boolean),
         specializations_en: specializationsEnStr.split(",").map((s: string) => s.trim()).filter(Boolean),
+        specializations_ru: specializationsRuStr.split(",").map((s: string) => s.trim()).filter(Boolean),
       };
 
       if (editingMember) {
@@ -495,6 +508,7 @@ export default function AdminTeam() {
                     <div className="flex items-center gap-1 bg-slate-100 rounded-lg p-1 w-fit">
                       <button type="button" onClick={() => setFormLang("ka")} className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${formLang === "ka" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}>ქართული</button>
                       <button type="button" onClick={() => setFormLang("en")} className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${formLang === "en" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}>English</button>
+                      <button type="button" onClick={() => setFormLang("ru")} className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${formLang === "ru" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"}`}>Русский</button>
                     </div>
                   </div>
 
@@ -525,7 +539,7 @@ export default function AdminTeam() {
                         )}
                       </div>
                     </>
-                  ) : (
+                  ) : formLang === "en" ? (
                     <>
                       <div>
                         <label className="block text-xs font-medium text-slate-600 mb-1.5">Full Name <span className="text-slate-400 font-normal ml-1">(optional)</span></label>
@@ -545,6 +559,32 @@ export default function AdminTeam() {
                         {specializationsEnStr.trim() && (
                           <div className="flex flex-wrap gap-1.5 mt-2">
                             {specializationsEnStr.split(",").map((s: string) => s.trim()).filter(Boolean).map((s: string) => (
+                              <span key={s} className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] rounded-full">{s}</span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Имя и фамилия <span className="text-slate-400 font-normal ml-1">(необязательно)</span></label>
+                        <input type="text" value={nameRu} onChange={(e) => setNameRu(e.target.value)} placeholder="напр. Тамар Гиоргадзе" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Должность <span className="text-slate-400 font-normal ml-1">(необязательно)</span></label>
+                        <input type="text" value={roleRu} onChange={(e) => setRoleRu(e.target.value)} placeholder="напр. Главный бухгалтер" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Биография <span className="text-slate-400 font-normal ml-1">(необязательно)</span></label>
+                        <textarea rows={5} value={bioRu} onChange={(e) => setBioRu(e.target.value)} placeholder="Профессиональный опыт..." className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-none" />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-medium text-slate-600 mb-1.5">Специализации<span className="text-slate-400 font-normal ml-1">(через запятую, необязательно)</span></label>
+                        <input type="text" value={specializationsRuStr} onChange={(e) => setSpecializationsRuStr(e.target.value)} placeholder="Налоговый аудит, Финансовая отчётность" className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition" />
+                        {specializationsRuStr.trim() && (
+                          <div className="flex flex-wrap gap-1.5 mt-2">
+                            {specializationsRuStr.split(",").map((s: string) => s.trim()).filter(Boolean).map((s: string) => (
                               <span key={s} className="px-2.5 py-1 bg-slate-100 text-slate-600 text-[11px] rounded-full">{s}</span>
                             ))}
                           </div>

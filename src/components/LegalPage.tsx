@@ -11,8 +11,10 @@ type PageKey = "terms" | "privacy";
 interface PageContent {
   title_ka: string;
   title_en: string;
+  title_ru: string;
   content_ka: string;
   content_en: string;
+  content_ru: string;
 }
 
 interface Props {
@@ -21,7 +23,7 @@ interface Props {
 
 export default function LegalPage({ pageKey }: Props) {
   const { i18n } = useTranslation();
-  const isGeo = i18n.language === "ge";
+  const lang = i18n.language;
 
   const [content, setContent] = useState<PageContent | null>(null);
   const [loading, setLoading] = useState(true);
@@ -40,15 +42,15 @@ export default function LegalPage({ pageKey }: Props) {
   }, [pageKey]);
 
   const title = content
-    ? i18n.language === 'en'
-      ? content.title_en || content.title_ka // თუ 'en'-ია, აჩვენე ინგლისური (ან ქართული თუ ცარიელია)
-      : content.title_ka || content.title_en // ნებისმიერ სხვა შემთხვევაში ('ka', 'ge', by default) აჩვენე ქართული
+    ? lang === 'ru' ? (content.title_ru   || content.title_en   || content.title_ka)
+    : lang === 'en' ? (content.title_en   || content.title_ka)
+    : (content.title_ka || content.title_en)
     : "";
 
   const body = content
-    ? i18n.language === 'en'
-      ? content.content_en || content.content_ka
-      : content.content_ka || content.content_en
+    ? lang === 'ru' ? (content.content_ru || content.content_en || content.content_ka)
+    : lang === 'en' ? (content.content_en || content.content_ka)
+    : (content.content_ka || content.content_en)
     : "";
 
   const seoMeta = pageKey === 'privacy'
@@ -88,7 +90,7 @@ export default function LegalPage({ pageKey }: Props) {
           /* No content yet */
           <div className="pt-16 text-center">
             <p className="text-stone-400 text-sm font-light">
-              {isGeo ? "შინაარსი ჯერ არ დაემატა." : "Content not available yet."}
+              {lang === 'ru' ? "Содержимое ещё не добавлено." : lang === 'en' ? "Content not available yet." : "შინაარსი ჯერ არ დაემატა."}
             </p>
           </div>
         ) : (
@@ -96,7 +98,7 @@ export default function LegalPage({ pageKey }: Props) {
             {/* Header */}
             <div className="mb-10 pb-6 border-b border-stone-100">
               <span className="text-[10px] tracking-[0.3em] uppercase font-semibold text-stone-400 mb-3 block">
-                {isGeo ? "სამართლებრივი ინფორმაცია" : "Legal"}
+                {lang === 'ru' ? "Правовая информация" : lang === 'en' ? "Legal" : "სამართლებრივი ინფორმაცია"}
               </span>
               <h1 className="font-serif text-2xl md:text-3xl text-stone-900 font-normal leading-snug">
                 {title}

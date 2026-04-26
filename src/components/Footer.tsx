@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MapPin } from 'lucide-react'
+import { Phone, PhoneCall, Mail, MapPin } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import logoBalance from '../assets/logoBalance.png'
 
@@ -20,7 +20,7 @@ export default function Footer() {
         {/* Col 1 — Brand */}
         <div className="sm:col-span-2 lg:col-span-1">
           <Link to="/" className="inline-flex no-underline mb-5 hover:opacity-80 transition-opacity duration-200">
-            <img src={logoBalance} alt="Balance101" className="h-16 w-auto object-contain brightness-0 invert" />
+            <img src={logoBalance} alt="Balance101" className="h-32 w-auto object-contain brightness-0 invert" />
           </Link>
           <p className="text-[13px] text-white/50 leading-relaxed max-w-88">
             {t('layout.footer.tagline')}
@@ -75,7 +75,10 @@ export default function Footer() {
             </li>
             {phones.map((p, i) => (
               <li key={i} className="flex items-center gap-3">
-                <Phone size={13} className={`shrink-0 ${i === 0 ? 'text-gold-500' : 'text-transparent'}`} strokeWidth={1.8} />
+                {i === 0
+                  ? <Phone size={13} className="text-gold-500 shrink-0" strokeWidth={1.8} />
+                  : <PhoneCall size={13} className="text-gold-500 shrink-0" strokeWidth={1.8} />
+                }
                 <a
                   href={p.href}
                   className="text-[13px] text-white/50 hover:text-gold-400 transition-colors duration-200 no-underline"

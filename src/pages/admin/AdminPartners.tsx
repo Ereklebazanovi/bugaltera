@@ -32,8 +32,10 @@ interface Partner {
   id: string;
   name_ka: string;
   name_en: string;
+  name_ru: string;
   description_ka: string;
   description_en: string;
+  description_ru: string;
   websiteUrl: string;
   logoUrl: string;
   createdAt: { toDate: () => Date } | null;
@@ -52,14 +54,16 @@ export default function AdminPartners() {
   const [loadingPartners, setLoadingPartners] = useState(true);
   const [editingPartner, setEditingPartner] = useState<Partner | null>(null);
 
-  const [formLang, setFormLang] = useState<"ka" | "en">("ka");
+  const [formLang, setFormLang] = useState<"ka" | "en" | "ru">("ka");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [nameKa, setNameKa] = useState("");
   const [nameEn, setNameEn] = useState("");
+  const [nameRu, setNameRu] = useState("");
   const [descriptionKa, setDescriptionKa] = useState("");
   const [descriptionEn, setDescriptionEn] = useState("");
+  const [descriptionRu, setDescriptionRu] = useState("");
   const [compressing, setCompressing] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -93,8 +97,10 @@ export default function AdminPartners() {
   const resetForm = () => {
     setNameKa("");
     setNameEn("");
+    setNameRu("");
     setDescriptionKa("");
     setDescriptionEn("");
+    setDescriptionRu("");
     setWebsiteUrl("");
     clearImage();
     setError(null);
@@ -108,8 +114,10 @@ export default function AdminPartners() {
     setEditingPartner(partner);
     setNameKa(partner.name_ka ?? "");
     setNameEn(partner.name_en ?? "");
+    setNameRu(partner.name_ru ?? "");
     setDescriptionKa(partner.description_ka ?? "");
     setDescriptionEn(partner.description_en ?? "");
+    setDescriptionRu(partner.description_ru ?? "");
     setWebsiteUrl(partner.websiteUrl ?? "");
     setImagePreview(partner.logoUrl);
     setImageFile(null);
@@ -170,8 +178,10 @@ export default function AdminPartners() {
       const payload = {
         name_ka: nameKa,
         name_en: nameEn,
+        name_ru: nameRu,
         description_ka: descriptionKa,
         description_en: descriptionEn,
+        description_ru: descriptionRu,
         websiteUrl,
         logoUrl,
       };
@@ -379,6 +389,15 @@ export default function AdminPartners() {
                     >
                       English
                     </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormLang("ru")}
+                      className={`text-xs px-4 py-1.5 rounded-md transition-colors font-medium ${
+                        formLang === "ru" ? "bg-white text-slate-800 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                      }`}
+                    >
+                      Русский
+                    </button>
                   </div>
                 </div>
 
@@ -410,7 +429,7 @@ export default function AdminPartners() {
                       />
                     </div>
                   </>
-                ) : (
+                ) : formLang === "en" ? (
                   <>
                     <div>
                       <label className="block text-xs font-medium text-slate-600 mb-1.5">
@@ -435,6 +454,35 @@ export default function AdminPartners() {
                         value={descriptionEn}
                         onChange={(e) => setDescriptionEn(e.target.value)}
                         placeholder="Brief company description..."
+                        className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-none"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <label className="block text-xs font-medium text-slate-600 mb-1.5">
+                        Название компании
+                        <span className="text-slate-400 font-normal ml-1">(необязательно)</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={nameRu}
+                        onChange={(e) => setNameRu(e.target.value)}
+                        placeholder="напр. TBC Bank"
+                        className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-slate-600 mb-1.5">
+                        Краткое описание
+                        <span className="text-slate-400 font-normal ml-1">(необязательно)</span>
+                      </label>
+                      <textarea
+                        rows={4}
+                        value={descriptionRu}
+                        onChange={(e) => setDescriptionRu(e.target.value)}
+                        placeholder="Краткое описание компании..."
                         className="w-full border border-slate-200 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-slate-900/10 focus:border-slate-400 transition resize-none"
                       />
                     </div>

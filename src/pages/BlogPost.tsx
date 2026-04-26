@@ -13,10 +13,13 @@ interface Post {
   id: string
   title_ka: string
   title_en?: string
+  title_ru?: string
   excerpt_ka: string
   excerpt_en?: string
+  excerpt_ru?: string
   content_ka: string
   content_en?: string
+  content_ru?: string
   coverUrl: string
   slug: string
   createdAt: { toDate: () => Date } | null
@@ -25,11 +28,8 @@ interface Post {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function formatDate(date: Date, lang: string): string {
-  return date.toLocaleDateString(lang === 'en' ? 'en-US' : 'ka-GE', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+  const locale = lang === 'en' ? 'en-US' : lang === 'ru' ? 'ru-RU' : 'ka-GE'
+  return date.toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })
 }
 
 // ── Smart content renderer ────────────────────────────────────────────────────
@@ -111,9 +111,15 @@ export default function BlogPost() {
   const { i18n } = useTranslation()
   const lang = i18n.language
 
-  const getTitle   = (p: Post) => lang === 'en' ? (p.title_en   || p.title_ka)   : p.title_ka
-  const getExcerpt = (p: Post) => lang === 'en' ? (p.excerpt_en || p.excerpt_ka) : p.excerpt_ka
-  const getContent = (p: Post) => lang === 'en' ? (p.content_en || p.content_ka) : p.content_ka
+  const getTitle   = (p: Post) =>
+    lang === 'ru' ? (p.title_ru   || p.title_en   || p.title_ka)   :
+    lang === 'en' ? (p.title_en   || p.title_ka)   : p.title_ka
+  const getExcerpt = (p: Post) =>
+    lang === 'ru' ? (p.excerpt_ru || p.excerpt_en || p.excerpt_ka) :
+    lang === 'en' ? (p.excerpt_en || p.excerpt_ka) : p.excerpt_ka
+  const getContent = (p: Post) =>
+    lang === 'ru' ? (p.content_ru || p.content_en || p.content_ka) :
+    lang === 'en' ? (p.content_en || p.content_ka) : p.content_ka
 
   const [post,        setPost]        = useState<Post | null>(null)
   const [recentPosts, setRecentPosts] = useState<Post[]>([])
@@ -181,7 +187,7 @@ export default function BlogPost() {
         <p className="font-serif text-2xl text-stone-700">სტატია ვერ მოიძებნა</p>
         <Link to="/blog" className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-stone-800 transition-colors">
           <ArrowLeft size={14} />
-          {lang === 'en' ? 'Back to Blog' : 'ბლოგზე დაბრუნება'}
+          {lang === 'ru' ? 'Назад к блогу' : lang === 'en' ? 'Back to Blog' : 'ბლოგზე დაბრუნება'}
         </Link>
       </div>
     )
@@ -238,7 +244,7 @@ export default function BlogPost() {
             className={`inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase font-medium transition-colors duration-300 no-underline ${backLinkCls}`}
           >
             <ArrowLeft size={12} strokeWidth={2} />
-            {lang === 'en' ? 'Blog' : 'ბლოგი'}
+            {lang === 'ru' ? 'Блог' : lang === 'en' ? 'Blog' : 'ბლოგი'}
           </Link>
 
           <button
@@ -252,8 +258,8 @@ export default function BlogPost() {
               : <Moon size={13} strokeWidth={2} aria-hidden="true" />
             }
             {isDark
-              ? (lang === 'en' ? 'Light' : 'ნათელი')
-              : (lang === 'en' ? 'Dark'  : 'მუქი')
+              ? (lang === 'ru' ? 'Светлый' : lang === 'en' ? 'Light' : 'ნათელი')
+              : (lang === 'ru' ? 'Тёмный'  : lang === 'en' ? 'Dark'  : 'მუქი')
             }
           </button>
         </div>
@@ -286,7 +292,7 @@ export default function BlogPost() {
           {/* Share row */}
           <div>
             <p className={`text-[10px] tracking-[0.3em] uppercase font-semibold mb-3 transition-colors duration-500 ${metaColor}`}>
-              {lang === 'en' ? 'Share' : 'გაზიარება'}
+              {lang === 'ru' ? 'Поделиться' : lang === 'en' ? 'Share' : 'გაზიარება'}
             </p>
             <div className="flex flex-wrap items-center gap-2">
               {/* Facebook */}
@@ -331,8 +337,8 @@ export default function BlogPost() {
                   : <Link2 size={13} strokeWidth={2}   aria-hidden="true" />
                 }
                 {copied
-                  ? (lang === 'en' ? 'Copied!'          : 'კოპირებულია!')
-                  : (lang === 'en' ? 'Copy Link'        : 'ლინკის კოპირება')
+                  ? (lang === 'ru' ? 'Скопировано!'   : lang === 'en' ? 'Copied!'    : 'კოპირებულია!')
+                  : (lang === 'ru' ? 'Копировать ссылку' : lang === 'en' ? 'Copy Link' : 'ლინკის კოპირება')
                 }
               </button>
             </div>
@@ -382,7 +388,7 @@ export default function BlogPost() {
               className={`inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase font-medium transition-colors duration-300 no-underline ${backLinkCls}`}
             >
               <ArrowLeft size={12} strokeWidth={2} />
-              {lang === 'en' ? 'Back to Blog' : 'ბლოგზე დაბრუნება'}
+              {lang === 'ru' ? 'Назад к блогу' : lang === 'en' ? 'Back to Blog' : 'ბლოგზე დაბრუნება'}
             </Link>
           </div>
         </motion.article>
@@ -392,7 +398,7 @@ export default function BlogPost() {
           <div className="max-w-5xl mx-auto px-4 md:px-8 pt-20 md:pt-28">
             <div className={`flex items-center gap-3 mb-8 border-b pb-4 transition-colors duration-500 ${divider}`}>
               <h2 className={`text-[10px] tracking-[0.35em] uppercase font-medium transition-colors duration-500 ${metaColor}`}>
-                {lang === 'en' ? 'Recent Articles' : 'სხვა სტატიები'}
+                {lang === 'ru' ? 'Другие статьи' : lang === 'en' ? 'Recent Articles' : 'სხვა სტატიები'}
               </h2>
             </div>
 
@@ -421,7 +427,7 @@ export default function BlogPost() {
                     </h3>
                     <div className={`mt-auto pt-3 border-t flex items-center justify-end transition-colors duration-500 ${divider}`}>
                       <span className={`inline-flex items-center gap-1.5 text-xs font-medium transition-all duration-200 ${metaColor}`}>
-                        {lang === 'en' ? 'Read More' : 'სრულად ნახვა'}
+                        {lang === 'ru' ? 'Читать далее' : lang === 'en' ? 'Read More' : 'სრულად ნახვა'}
                         <ArrowRight size={12} strokeWidth={1.75} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                       </span>
                     </div>

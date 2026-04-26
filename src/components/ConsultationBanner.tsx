@@ -58,6 +58,13 @@ export default function ConsultationBanner() {
               />
             </Link>
             <a
+              href="tel:+995511411604"
+              className="inline-flex items-center gap-2 text-white/50 text-[12px] hover:text-gold-400 transition-colors duration-200 no-underline"
+            >
+              <Phone size={13} strokeWidth={1.5} />
+              +995 511 411 604
+            </a>
+            <a
               href="tel:+995322190839"
               className="inline-flex items-center gap-2 text-white/50 text-[12px] hover:text-gold-400 transition-colors duration-200 no-underline"
             >

@@ -74,8 +74,10 @@ export default function HeroVariant() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.0, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             >
-              Balance 101 
- <span className="text-stone-400"> •</span> ბალანსი 101
+              Balance 101
+              {t('home.hero.localName') && (
+                <><span className="text-stone-400"> •</span> {t('home.hero.localName')}</>
+              )}
             </motion.h1>
 
             {/* 3 — Subtitle: years tagline */}

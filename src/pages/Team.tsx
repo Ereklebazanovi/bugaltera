@@ -15,13 +15,17 @@ interface Member {
   id: string
   name_ka: string
   name_en?: string
+  name_ru?: string
   role_ka: string
   role_en?: string
+  role_ru?: string
   bio_ka: string
   bio_en?: string
+  bio_ru?: string
   linkedin?: string
   specializations_ka?: string[]
   specializations_en?: string[]
+  specializations_ru?: string[]
   slug?: string
   photoUrl: string
   createdAt: { toDate: () => Date } | null
@@ -50,11 +54,17 @@ export default function Team() {
   const [loading, setLoading] = useState(true)
   const { t, i18n } = useTranslation()
 
-  const getName  = (m: Member) => i18n.language === 'en' ? (m.name_en || m.name_ka) : m.name_ka
-  const getRole  = (m: Member) => i18n.language === 'en' ? (m.role_en || m.role_ka) : m.role_ka
-  const getSpecs = (m: Member): string[] => (i18n.language === 'en'
-    ? (m.specializations_en?.length ? m.specializations_en : m.specializations_ka)
-    : m.specializations_ka) ?? []
+  const getName  = (m: Member) =>
+    i18n.language === 'ru' ? (m.name_ru || m.name_en || m.name_ka) :
+    i18n.language === 'en' ? (m.name_en || m.name_ka) : m.name_ka
+  const getRole  = (m: Member) =>
+    i18n.language === 'ru' ? (m.role_ru || m.role_en || m.role_ka) :
+    i18n.language === 'en' ? (m.role_en || m.role_ka) : m.role_ka
+  const getSpecs = (m: Member): string[] => {
+    if (i18n.language === 'ru') return (m.specializations_ru?.length ? m.specializations_ru : m.specializations_en?.length ? m.specializations_en : m.specializations_ka) ?? []
+    if (i18n.language === 'en') return (m.specializations_en?.length ? m.specializations_en : m.specializations_ka) ?? []
+    return m.specializations_ka ?? []
+  }
 
   useEffect(() => {
     const fetchMembers = async () => {
