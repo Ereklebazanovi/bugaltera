@@ -1,6 +1,6 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Phone, Menu, X } from 'lucide-react'
+import { Phone, Menu, X, ChevronDown } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import logoBalance from '../assets/logoBalance.png'
@@ -8,17 +8,21 @@ import logoBalance from '../assets/logoBalance.png'
 const NAV_LINKS = [
   { key: 'nav.home',     to: '/'         },
   { key: 'nav.services', to: '/services' },
-  { key: 'nav.about', to: '/about' },
+  { key: 'nav.about',    to: '/about'    },
   { key: 'nav.team',     to: '/team'     },
   { key: 'nav.blog',     to: '/blog'     },
   { key: 'nav.partners', to: '/partners' },
 ]
 
+const LANGUAGES = ['ge', 'en', 'ru'] as const
+
 export default function Header() {
   const { t, i18n } = useTranslation()
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const langRef = useRef<HTMLDivElement>(null)
 
   const isActive = (to: string) =>
     to === '/' ? location.pathname === '/' : location.pathname.startsWith(to)
@@ -42,20 +46,36 @@ export default function Header() {
     return () => window.clearTimeout(tid)
   }, [location.pathname])
 
+  // Close lang dropdown on outside click
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  const currentLang = i18n.language as typeof LANGUAGES[number]
+
   return (
     <>
       {/* ── Fixed Header ──────────────────────────────────────────────────── */}
-      
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-white shadow-[0_1px_12px_rgba(0,0,0,0.07)] border-b border-stone-200'
           : 'bg-white/90 backdrop-blur-md border-b border-stone-200/60'
       }`}>
-        <nav className="relative max-w-7xl mx-auto px-6 lg:px-8 h-14 lg:h-16 flex items-center justify-between">
+        <nav className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 lg:h-16 flex items-center justify-between">
 
           {/* Left: Logo */}
           <Link to="/" className="flex items-center no-underline shrink-0 hover:opacity-80 transition-opacity duration-200">
-            <img src={logoBalance} alt="Balance101" className="h-32 md:h-32 w-auto object-contain mt-2 sm:mt-2 lg:mt-3 -ml-4 lg:ml-0" />
+            <img
+              src={logoBalance}
+              alt="Balance101"
+              className="h-28 md:h-32 w-auto object-contain mt-2 lg:mt-3"
+            />
           </Link>
 
           {/* Center: Nav links — absolutely centered, desktop only */}
@@ -84,27 +104,57 @@ export default function Header() {
             ))}
           </ul>
 
-          {/* Right: Language switcher + Mobile controls + Desktop CTA */}
+          {/* Right: Language dropdown + Mobile controls + Desktop CTA */}
           <div className="flex items-center gap-2 lg:gap-4 shrink-0">
 
-            {/* Language switcher — all screens */}
-            <div className="flex items-center gap-1 text-[10px] font-medium tracking-widest select-none">
-              {(['ge', 'en', 'ru'] as const).map((lng, idx) => (
-                <Fragment key={lng}>
-                  {idx > 0 && <span className="text-stone-300 mx-0.5">|</span>}
-                  <button
-                    type="button"
-                    onClick={() => i18n.changeLanguage(lng)}
-                    className={`uppercase transition-colors duration-200 cursor-pointer bg-transparent border-none p-0 ${
-                      i18n.language === lng
-                        ? 'text-[#c78f9b] font-semibold'
-                        : 'text-stone-400 hover:text-stone-600'
-                    }`}
+            {/* Language dropdown */}
+            <div ref={langRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setLangOpen(v => !v)}
+                className={`flex items-center gap-1 px-2.5 h-7 border rounded-full text-[10px] font-semibold uppercase tracking-widest cursor-pointer bg-transparent transition-all duration-200 ${
+                  langOpen
+                    ? 'border-[#c78f9b] text-[#c78f9b]'
+                    : 'border-stone-300 text-stone-600 hover:border-[#c78f9b] hover:text-[#c78f9b]'
+                }`}
+              >
+                {currentLang}
+                <ChevronDown
+                  size={10}
+                  strokeWidth={2.5}
+                  className={`transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {langOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -6, scale: 0.96 }}
+                    transition={{ duration: 0.15, ease: 'easeOut' }}
+                    className="absolute right-0 top-full mt-2 bg-white border border-stone-200 rounded-xl shadow-lg shadow-stone-100/80 overflow-hidden min-w-[72px] z-50"
                   >
-                    {lng}
-                  </button>
-                </Fragment>
-              ))}
+                    {LANGUAGES.map((lng) => (
+                      <button
+                        key={lng}
+                        type="button"
+                        onClick={() => { i18n.changeLanguage(lng); setLangOpen(false) }}
+                        className={`w-full flex items-center justify-between px-3.5 py-2 text-[10px] font-semibold uppercase tracking-widest cursor-pointer bg-transparent border-none transition-colors duration-150 ${
+                          currentLang === lng
+                            ? 'text-[#c78f9b] bg-[#c78f9b]/5'
+                            : 'text-stone-500 hover:text-stone-900 hover:bg-stone-50'
+                        }`}
+                      >
+                        {lng}
+                        {currentLang === lng && (
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#c78f9b] shrink-0" />
+                        )}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Mobile: phone */}
@@ -135,7 +185,7 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open menu"
               aria-expanded={mobileMenuOpen}
-              className="lg:hidden flex items-center gap-1.5 px-3 h-8 border border-stone-300 rounded-full text-stone-800 hover:border-stone-500 hover:bg-stone-50 transition-all duration-200 cursor-pointer bg-transparent text-[10px] font-medium tracking-wide"
+              className="lg:hidden flex items-center gap-1.5 px-3 h-8 border border-stone-300 rounded-full text-stone-800 hover:border-stone-500 hover:bg-stone-50 transition-all duration-200 cursor-pointer bg-transparent text-[10px] font-medium tracking-wide whitespace-nowrap"
             >
               <Menu size={13} strokeWidth={1.5} />
               {t('layout.header.mobileMenuOpen')}
