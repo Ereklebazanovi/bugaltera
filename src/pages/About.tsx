@@ -72,7 +72,7 @@ export default function About() {
         path="/about"
       />
 
-      {/* ── Hero ──────────────────────────────────────────────────────────── */}
+      {/* ── Herooooo ──────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden min-h-[55vh] md:min-h-[70vh] flex flex-col bg-stone-900">
         <img src={practiceHero} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-[center_15%]" />
         <div className="absolute inset-0 bg-linear-to-b from-stone-900/50 via-stone-900/80 to-stone-900/95" />
