@@ -130,9 +130,22 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
 
-          <p className="text-[11px] text-white/30 tracking-wide">
-            &copy; {new Date().getFullYear()} Balance101. {t('layout.footer.copyright')}
-          </p>
+          <div className="flex flex-col items-center sm:items-start gap-1">
+            <p className="text-[11px] text-white/30 tracking-wide">
+              &copy; {new Date().getFullYear()} Balance101. {t('layout.footer.copyright')}
+            </p>
+            <p className="text-[10px] text-white/20 tracking-wide">
+              Made by{' '}
+              <a
+                href="https://vifadigital.ge"
+                target="_blank"
+                rel="noopener"
+                className="hover:text-white/40 transition-colors no-underline"
+              >
+                VIFA Digital
+              </a>
+            </p>
+          </div>
 
           <div className="flex items-center gap-4 text-[11px] text-white/30">
             <Link to="/terms"   className="hover:text-white/60 transition-colors no-underline">{t('layout.footer.terms')}</Link>
